@@ -7,7 +7,7 @@ alias gconf="cd ~ && nvim .gitconfig"
 alias evi="cd ~/.config/nvim && nvim init.vim"
 alias penv="source env/bin/activate"
 alias src="cd ~/Documents/src"
-alias g="git"
+alias gg="git"
 
 alias pvenv="source venv/bin/activate"
 alias api="cd ~/Documents/src/b2b-api && nvim"
