@@ -2,8 +2,7 @@
 #===============================================================================
 #NAME
 #  files_in_file_content.bash
-
-
+#
 # DESCRIPTION
 #  Return path of everything in folder/ wich is inside text_file.txt
 #  Run script:
