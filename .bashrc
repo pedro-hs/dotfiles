@@ -21,5 +21,3 @@ alias apis="cd ~/Documents/src/b2b-api && source exe.sh s"
 alias admin="cd ~/Documents/src/b2b-admin-v2 && nvim"
 alias sdk="cd ~/Documents/src/b2b-api-sdk && nvim"
 alias notes="cd ~/Documents/Pedro/notes; terminator -e \"vi login_phs daily\""
-
-
