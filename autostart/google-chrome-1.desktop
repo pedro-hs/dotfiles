@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=google-chrome https://yandeh.atlassian.net/secure/RapidBoard.jspa?rapidView=40&projectKey=B2A https://docs.google.com/spreadsheets/d/1C0zyBj2FjPD_ilimRgJybFu7i7UOfe1nTySVrQIFdLg/edit#gid=0
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=chrome
+Name=chrome
+Comment[en_US]=
+Comment=
