@@ -20,26 +20,32 @@ rm -rf ~/.config/terminator
 mkdir ~/.config/terminator
 cp config ~/.config/terminator
 
+# PYTHON
+sudo apt install -y python3-pip python3-virtualenv
+
+# CHROME
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install -y ./google-chrome-stable_current_amd64.deb
+rm -f google-chrome-stable_current_amd64.deb
+
 # CFILES
 git clone https://github.com/mananapr/cfiles.git
 cd cfiles
-sudo apt install libncurses-dev libxext-dev python3-pip mediainfo atool
+sudo apt install -y libncurses-dev libxext-dev mediainfo atool fzf
+pip3 install ueberzug
 make
 sudo make install
-pip3 install ueberzug virtualenv
 cd ..
 rm -rf cfiles
 
 # VIM
-installation_dir=$(pwd)
+installation_dir="$(pwd)"
 cd ~/.config
 sudo rm -rf nvim
 git clone https://github.com/pedro-hs/nvim.git
 cd nvim
 sudo sh install.sh && vi -c PlugInstall +qall
-rm -f DroidSansMono.zip
-# cd ~/.config/nvim && vi --clean (run :PlugInstall)
-cd $installation_dir
+cd "$installation_dir"
 
 # TWEAKS
 gsettings set org.gnome.desktop.sound event-sounds false
@@ -53,6 +59,8 @@ gsettings set org.gnome.desktop.interface gtk-key-theme Emacs
 gsettings set org.gnome.shell.extensions.desktop-icons show-trash false
 gsettings set org.gnome.shell.extensions.desktop-icons show-home false
 gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 30
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
+gsettings set org.gnome.shell.extensions.dash-to-dock preferred-monitor 0
 gsettings set org.gnome.desktop.wm.preferences button-layout :minimize,close
 gsettings set org.gnome.mutter center-new-windows true
 
@@ -69,4 +77,3 @@ gsettings set org.gnome.mutter center-new-windows true
 
 # TODO: Fix keyboard fn key
 # TODO: pair bluetooth keyboard on startup
-# TODO: Remove unecessary programs
