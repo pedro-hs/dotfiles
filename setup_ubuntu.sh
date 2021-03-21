@@ -77,3 +77,4 @@ gsettings set org.gnome.mutter center-new-windows true
 
 # TODO: Fix keyboard fn key
 # TODO: pair bluetooth keyboard on startup
+# TODO: Check if is need to create a sound switcher autostart

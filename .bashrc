@@ -1,7 +1,7 @@
 # /bin/cp /etc/skel/.bashrc ~/
 alias python=python3.6
 alias pip=pip3
-alias rg=ranger
+alias cf=cfiles
 alias bashrc="cd ~ && nvim .bashrc"
 alias gconf="cd ~ && nvim .gitconfig"
 alias evi="cd ~/.config/nvim && nvim src/config.vim src/maps.vim src/complements.vim src/plugins.vim"
