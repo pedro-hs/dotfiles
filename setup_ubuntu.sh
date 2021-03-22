@@ -1,45 +1,56 @@
 #!/usr/bin/env bash
-sudo apt purge --autoremove gedit
 cat .bashrc | sed -e 1d >> ~/.bashrc
+source script_status.sh
+
+print_message "UPDATE"
+sudo apt purge --autoremove gedit
 sudo apt-add-repository universe
 sudo apt-add-repository multiverse
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install -y libreoffice-calc libreoffice-writer curl mlocate wget gcc make
 sudo snap refresh
+
+print_message "INSTALL LB-OFFICE AND TERM UTILS"
+sudo apt install -y libreoffice-calc libreoffice-writer curl mlocate wget gcc make
+
+print_message "INSTALL VSCODE AND SOUND SWITCHER"
 sudo snap install --classic code
 sudo snap install indicator-sound-switcher
 
-# GIT
+print_message "INSTALL AND SETUP GIT"
 sudo apt install -y git
 rm -f ~/.gitconfig
 cp .gitconfig ~/
 
-# TERMINATOR
+print_message "INSTALL AND SETUP TERMINATOR"
 sudo apt install -y terminator
 rm -rf ~/.config/terminator
 mkdir ~/.config/terminator
 cp config ~/.config/terminator
 
-# PYTHON
+print_message "INSTALL PIP AND VIRTUALENV"
 sudo apt install -y python3-pip python3-virtualenv
 
-# CHROME
+print_message "INSTALL CHROME"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install -y ./google-chrome-stable_current_amd64.deb
 rm -f google-chrome-stable_current_amd64.deb
 
-# CFILES
+print_message "INSTALL AND SETUP CFILES"
+sudo rm -rf /home/$(whoami)/.local/share/Trash
+mkdir "/home/$(whoami)/.local/share/Trash"
+mkdir "/home/$(whoami)/.local/share/Trash/files"
 git clone https://github.com/mananapr/cfiles.git
 cd cfiles
-sudo apt install -y libncurses-dev libxext-dev mediainfo atool fzf
+sudo apt install -y libncurses-dev libxext-dev mediainfo atool fzf xdg-utils
 pip3 install ueberzug
 make
 sudo make install
 cd ..
 rm -rf cfiles
+# TODO: Include scripts and bookmarks in dotfiles with auto config
 
-# VIM
+print_message "INSTALL AND SETUP NEOVIM"
 installation_dir="$(pwd)"
 cd ~/.config
 sudo rm -rf nvim
@@ -48,7 +59,7 @@ cd nvim
 sudo sh install.sh && vi -c PlugInstall +qall
 cd "$installation_dir"
 
-# TWEAKS
+print_message "SETUP PREFERENCES"
 gsettings set org.gnome.desktop.sound event-sounds false
 gsettings set org.gnome.desktop.interface clock-show-date true
 gsettings set org.gnome.desktop.interface clock-show-seconds true
@@ -64,8 +75,16 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
 gsettings set org.gnome.shell.extensions.dash-to-dock preferred-monitor 0
 gsettings set org.gnome.desktop.wm.preferences button-layout :minimize,close
 gsettings set org.gnome.mutter center-new-windows true
+dconf write /org/gnome/shell/favorite-apps "['google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'terminator.desktop']"
+sudo updatedb
 
-# KEYBOARD
+print_message "TODO"
+echo 'Make vim after install'
+echo 'Setup chrome bookmarks'
+
+print_message "DONE"
+
+# KEYBOARD FN TODO
 # wget https://github.com/jergusg/k380-function-keys-conf/archive/refs/tags/v1.1.zip
 # # Connect keyboard
 # unrar k380-function-keys-conf-1.1.zip
@@ -75,7 +94,3 @@ gsettings set org.gnome.mutter center-new-windows true
 # cd ..
 # rm -rf k380-function-keys-conf-1.1
 # rm -f k380-function-keys-conf-1.1.zip
-
-# TODO: Fix keyboard fn key
-# TODO: pair bluetooth keyboard on startup
-# TODO: Check if is need to create a sound switcher autostart

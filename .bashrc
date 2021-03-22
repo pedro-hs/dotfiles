@@ -1,5 +1,4 @@
 # /bin/cp /etc/skel/.bashrc ~/
-alias python=python3.6
 alias pip=pip3
 alias cf=cfiles
 alias bashrc="cd ~ && nvim .bashrc"
