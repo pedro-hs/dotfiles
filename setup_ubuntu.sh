@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 sudo apt purge --autoremove gedit
 cat .bashrc | sed -e 1d >> ~/.bashrc
 sudo apt-add-repository universe
