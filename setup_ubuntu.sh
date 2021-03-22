@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 cat .bashrc | sed -e 1d >> ~/.bashrc
+cat temp_bashrc >> ~/.bashrc  # TEMP
 source script_status.sh
+sudo apt purge --autoremove -y gedit
 
 print_message "UPDATE"
-sudo apt purge --autoremove gedit
 sudo apt-add-repository universe
 sudo apt-add-repository multiverse
 sudo apt update -y
@@ -40,15 +41,21 @@ print_message "INSTALL AND SETUP CFILES"
 sudo rm -rf /home/$(whoami)/.local/share/Trash
 mkdir "/home/$(whoami)/.local/share/Trash"
 mkdir "/home/$(whoami)/.local/share/Trash/files"
-git clone https://github.com/mananapr/cfiles.git
-cd cfiles
-sudo apt install -y libncurses-dev libxext-dev mediainfo atool fzf xdg-utils
+sudo apt install -y libncurses-dev libxext-dev mediainfo atool fzf xdg-utils poppler-utils
 pip3 install ueberzug
+git clone https://github.com/mananapr/cfiles.git
+rm -f cfiles/config.h
+cp cfiles_conf/config.h cfiles
+cd cfiles
 make
 sudo make install
 cd ..
 rm -rf cfiles
-# TODO: Include scripts and bookmarks in dotfiles with auto config
+rm -rf ~/.config/cfiles/scripts
+mkdir ~/.config/cfiles/scripts
+cp cfiles_conf/scripts/* ~/.config/cfiles/scripts
+rm -f ~/.config/cfiles/bookmarks
+cp cfiles_conf/bookmarks ~/.config/cfiles/bookmarks
 
 print_message "INSTALL AND SETUP NEOVIM"
 installation_dir="$(pwd)"

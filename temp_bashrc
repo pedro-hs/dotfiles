@@ -1,0 +1,58 @@
+cfiles_man() {
+    less <<EOF
+    hjkl	Navigation keys
+    G           Go to end
+    g           Go to top
+    H           Go to top of current view
+    M           Go to middle of current view
+    L           Go to bottom of current view
+    pgup	Scroll Up One Page
+    pgdn	Scroll Down One Page
+
+
+    space	Add/Remove to/from list
+    tab         View list
+    e           Edit list
+    u           Empty list
+    y           Copy from list
+    v           Move from list
+    a           Rename in list
+    dd          Move from list to trash
+    dD          Delete from list to trash
+
+    f           Search using fzf
+    F           Search using fzf in the present directory
+    S           Open Shell in present directory
+    i           View mediainfo and general info
+    I           View preview
+    .           Toggle hidden files
+    b           Toggle borders
+    p           Run external script
+    r           Reload
+    q           Quit
+
+    ?           View/Goto bookmarks
+    m           Add bookmark
+    E           Edit bookmarks
+EOF
+}
+alias cfman="cfiles_man"
+
+emacs_man() {
+    less <<EOF
+    ctrl a       I
+    ctrl e       A
+    ctrl k       D
+    alt  d       de
+    ctrl u       d0
+    ctrl w       db
+    ctrl /       ggVG
+    ctrl f       l
+    ctrl b       h
+    alt  f       w
+    alt  b       b
+    ctrl l       clear
+    ctrl d       delete
+EOF
+}
+alias eman="emacs_man"

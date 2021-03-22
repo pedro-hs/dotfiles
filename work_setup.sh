@@ -10,12 +10,12 @@ sudo apt install -y awscli
 print_message "INSTALL PYTHON3.6"
 sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt-get update
-sudo apt install python3.6
+sudo apt install -y python3.6
 
 print_message "SETUP AUTOSTART"
 rm -rf ~/.config/autostart
 mkdir ~/.config/autostart
-cp work_autostart/* ~/.config/autostart/
+cp autostart_work/* ~/.config/autostart/
 
 print_message "INSTALL AND SETUP DOCKER"
 curl -fsSL https://get.docker.com -o get-docker.sh

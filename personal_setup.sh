@@ -2,7 +2,7 @@
 source script_status.sh
 
 print_message "INSTALL TRANSMISSION"
-sudo apt install transmission
+sudo apt install -y transmission
 
 print_message "INSTALL STEAM"
 wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb && sudo apt install -y ./steam.deb
