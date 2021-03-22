@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 sudo snap install dbeaver-ce insomnia
 sudo apt install -y awscli python3.6
 
