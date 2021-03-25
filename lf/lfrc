@@ -1,0 +1,73 @@
+set ignorecase true
+set shell bash
+set drawbox true
+set scrolloff 5
+
+# Go to with fzf
+cmd goto_fzf ${{
+    res="$(find . -maxdepth 1 | fzf --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    if [ -d "$res" ]; then
+        cmd="cd"
+    else
+        cmd="select"
+    fi
+    lf -remote "send $id $cmd \"$res\""
+}}
+map gf :goto_fzf
+
+# Freeze
+map <c-z> $ kill -STOP $PPID
+
+# Paste with progress status
+cmd paste $cp-p --lf-paste $id
+
+# Rename current file or selected files
+cmd batch_rename ${{
+    splited_path=(${fx//\// })
+    current_file="${splited_path[-1]}"
+    selected_files_count=$(echo "$fx" | wc -l)
+    if [[ $selected_files_count == 1 ]]; then
+        lf -remote "send $id push :rename<space>$current_file"
+    elif [[ $selected_files_count == 0 ]]; then
+        lf -remote "send $id push :rename<space>$current_file"
+    else
+        paths_before="$(mktemp)"
+        paths_after="$(mktemp)"
+        printf '%s\n' "$fs" >"$paths_before"
+        printf '%s\n' "$fs" >"$paths_after"
+        $EDITOR "$paths_after"
+        [[ $(wc -l $paths_after) -ne $(wc -l $paths_before) ]] && exit
+        paste "$paths_before" "$paths_after" | while IFS= read -r names; do
+            origin="$(printf '%s' "$names" | cut -f1)"
+            destiny="$(printf '%s' "$names" | cut -f2)"
+            if [ "$origin" = "$destiny" ] || [ -e "$destiny" ]; then
+                continue
+            fi
+            mv "$origin" "$destiny"
+        done
+        rm "$paths_before" "$paths_after"
+        lf -remote "send $id unselect"
+    fi
+}}
+map r batch_rename
+
+# Create multiple directories
+cmd mkdir %mkdir "$@"
+map a push :mkdir<space>
+
+# Create file and open editor
+cmd mkfile $vi "$@"
+map A push :mkfile<space>
+
+# Maps
+map D delete
+map . set hidden!
+map <enter> open
+
+# Sudo maps TODO: fix
+# map Sr sudo batch_rename
+# map Sa sudo push :mkdir<space>
+# map SA sudo push :mkfile<space>
+# map SD sudo delete
+# map Se sudo $EDITOR "$@"
+# map Sc sudo cut

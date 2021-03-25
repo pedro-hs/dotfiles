@@ -3,6 +3,7 @@ cat .bashrc | sed -e 1d >> ~/.bashrc
 cat temp_bashrc >> ~/.bashrc  # TEMP
 source script_status.sh
 sudo apt purge --autoremove -y gedit
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
 
 print_message "UPDATE"
 sudo apt-add-repository universe
@@ -23,11 +24,17 @@ sudo apt install -y git
 rm -f ~/.gitconfig
 cp .gitconfig ~/
 
-print_message "INSTALL AND SETUP TERMINATOR"
-sudo apt install -y terminator
-rm -rf ~/.config/terminator
-mkdir ~/.config/terminator
-cp config ~/.config/terminator
+print_message "INSTALL AND SETUP GS"
+git clone https://github.com/pedro-hs/git-selection.git
+
+print_message "INSTALL AND SETUP KITTY"
+sudo apt install -y kitty
+rm -rf ~/.config/kitty
+mkdir ~/.config/kitty
+cp kitty/* ~/.config/kitty
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command "'kitty -o allow_remote_control=yes --listen-on unix:/tmp/mykitty'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding "'<Super>t'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name "'kitty'"
 
 print_message "INSTALL PIP AND VIRTUALENV"
 sudo apt install -y python3-pip python3-virtualenv
@@ -36,26 +43,27 @@ print_message "INSTALL CHROME"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install -y ./google-chrome-stable_current_amd64.deb
 rm -f google-chrome-stable_current_amd64.deb
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/command "'google-chrome --incognito'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/binding "'<Super>g'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/name "'chrome'"
 
-print_message "INSTALL AND SETUP CFILES"
-sudo rm -rf /home/$(whoami)/.local/share/Trash
-mkdir "/home/$(whoami)/.local/share/Trash"
-mkdir "/home/$(whoami)/.local/share/Trash/files"
-sudo apt install -y libncurses-dev libxext-dev mediainfo atool fzf xdg-utils poppler-utils
-pip3 install ueberzug
-git clone https://github.com/mananapr/cfiles.git
-rm -f cfiles/config.h
-cp cfiles_conf/config.h cfiles
-cd cfiles
+print_message "INSTALL AND SETUP LF"
+echo 'deb http://download.opensuse.org/repositories/home:/Provessor/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/home:Provessor.list
+curl -fsSL https://download.opensuse.org/repositories/home:Provessor/xUbuntu_20.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_Provessor.gpg > /dev/null
+sudo apt update
+sudo apt install lf
+rm -rf ~/.config/lf
+mkdir ~/.config/lf
+cp lf/* ~/.config/lf
+git clone https://github.com/Naheel-Azawy/cp-p.git
+cd cp-p
 make
 sudo make install
 cd ..
-rm -rf cfiles
-rm -rf ~/.config/cfiles/scripts
-mkdir ~/.config/cfiles/scripts
-cp cfiles_conf/scripts/* ~/.config/cfiles/scripts
-rm -f ~/.config/cfiles/bookmarks
-cp cfiles_conf/bookmarks ~/.config/cfiles/bookmarks
+rm -rf cp-p
+rm -rf ~/.local/share/lf
+mkdir ~/.local/share/lf
+cp lf/marks ~/.local/share/lf
 
 print_message "INSTALL AND SETUP NEOVIM"
 installation_dir="$(pwd)"
@@ -80,14 +88,20 @@ gsettings set org.gnome.shell.extensions.desktop-icons show-home false
 gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 30
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
 gsettings set org.gnome.shell.extensions.dash-to-dock preferred-monitor 0
-gsettings set org.gnome.desktop.wm.preferences button-layout :minimize,close
+gsettings set org.gnome.desktop.session idle-delay 0
+gsettings set org.gnome.desktop.wm.preferences button-layout :close
 gsettings set org.gnome.mutter center-new-windows true
-dconf write /org/gnome/shell/favorite-apps "['google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'terminator.desktop']"
+dconf write /org/gnome/shell/favorite-apps "['google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'kitty.desktop']"
+
+print_message "CHANGE .DESKTOP"
+rm -rf /usr/share/applications/kitty.desktop
+rm -rf /usr/share/applications/nvim.desktop
+sudo cp desktop/* /usr/share/applications
 sudo updatedb
 
 print_message "TODO"
 echo 'Make vim after install'
-echo 'Setup chrome bookmarks'
+echo 'Setup chrome bookmarks and adblock'
 
 print_message "DONE"
 

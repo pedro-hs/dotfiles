@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-git init
-git config user.email pedrosantosarruda@outlook.com
-git config user.name pedro-hs

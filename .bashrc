@@ -1,13 +1,24 @@
 # /bin/cp /etc/skel/.bashrc ~/
-alias pip=pip3
-alias cf=cfiles
-alias bashrc="cd ~ && nvim .bashrc"
-alias gconf="cd ~ && nvim .gitconfig"
-alias evi="cd ~/.config/nvim && nvim src/config.vim src/maps.vim src/complements.vim src/plugins.vim"
-alias penv="source env/bin/activate"
-alias src="cd ~/Documents/src"
-alias pm="python3 manage.py"
-alias gg="git"
-
+# bash
+alias vbsh="cd ~ && nvim .bashrc"
+alias sbsh="cd ~ && source .bashrc"
+alias xp="xclip -sel clip"
 PS1='\w\[\033[32m\]$(__git_ps1)\n \$\[\033[0m\] '
+
+# git
+alias gg="git"
+alias gconf="cd ~ && nvim .gitconfig"
+
+# python
+alias pip=pip3
+alias pm="python3 manage.py"
+alias penv="source env/bin/activate"
+
+# vim
+alias evi="cd ~/.config/nvim && nvim src/config.vim src/maps.vim src/complements.vim src/plugins.vim"
 export EDITOR="nvim"
+alias src="cd ~/Documents/src"
+
+# lf
+source ~/.config/lf/scripts/lfcd.sh
+alias lf="lfcd"
