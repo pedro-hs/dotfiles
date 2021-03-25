@@ -25,7 +25,7 @@ rm -f ~/.gitconfig
 cp .gitconfig ~/
 
 print_message "INSTALL AND SETUP GS"
-git clone https://github.com/pedro-hs/git-selection.git
+# TODO
 
 print_message "INSTALL AND SETUP KITTY"
 sudo apt install -y kitty
