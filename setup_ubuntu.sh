@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-cat .bashrc | sed -e 1d >> ~/.bashrc
-cat temp_bashrc >> ~/.bashrc  # TEMP
 source script_status.sh
+
+print_message "INIT CONFIGURATION"
+cat .bashrc | sed -e 1d >> ~/.bashrc
 sudo apt purge --autoremove -y gedit
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
 
