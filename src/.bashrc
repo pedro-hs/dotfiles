@@ -22,3 +22,7 @@ alias src="cd ~/Documents/src"
 # lf
 source ~/.config/lf/scripts/lfcd.sh
 alias lf="lfcd"
+
+# kitty
+export TERM="xterm-256color"
+export TERMINAL="kitty -o allow_remote_control=yes --single-instance --listen-on unix:@mykitty"

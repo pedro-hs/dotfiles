@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Neovim
 TryExec=nvim
-Exec=kitty -o allow_remote_control=yes --listen-on unix:/tmp/mykitty nvim %F
+Exec=kitty -o allow_remote_control=yes --single-instance --listen-on unix:@mykitty nvim %F
 Terminal=false
 Type=Application
 Keywords=Text;editor;

@@ -2,7 +2,7 @@
 source show_status.sh
 
 print_message "INIT CONFIGURATION"
-cat .bashrc | sed -e 1d >> ~/.bashrc
+cat src/.bashrc | sed -e 1d >> ~/.bashrc
 sudo apt purge --autoremove -y gedit
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']"
 
@@ -36,7 +36,7 @@ print_message "INSTALL KITTY"
 sudo apt install -y kitty
 rm -rf ~/.config/kitty/*
 ln -sf $(pwd)/src/.config/kitty ~/.config/kitty
-dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command "'kitty -o allow_remote_control=yes --listen-on unix:/tmp/mykitty'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command "'kitty -o allow_remote_control=yes --single-instance --listen-on unix:/tmp/mykitty'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding "'<Super>t'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name "'kitty'"
 
@@ -68,7 +68,7 @@ rm -rf nvim
 git clone https://github.com/pedro-hs/nvim.git
 cd nvim
 sh install.sh && vi -c PlugInstall +qall
-dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command "'kitty -o allow_remote_control=yes --listen-on unix:/tmp/mykitty nvim'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command "'kitty -o allow_remote_control=yes --single-instance --listen-on unix:@mykitty nvim'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding "'<Super>n'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name "'neovim'"
 cd "$installation_dir"
@@ -94,7 +94,7 @@ dconf write /org/gnome/shell/favorite-apps "['google-chrome.desktop', 'org.gnome
 print_message "CHANGE .DESKTOP"
 sudo rm -rf /usr/share/applications/kitty.desktop
 sudo rm -rf /usr/share/applications/nvim.desktop
-sudo cp desktop/* /usr/share/applications
+sudo cp src/desktop/* /usr/share/applications
 sudo updatedb
 
 print_message "TODO"
