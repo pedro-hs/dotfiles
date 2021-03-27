@@ -19,7 +19,7 @@ map gf :goto_fzf
 map <c-z> $ kill -STOP $PPID
 
 # Paste with progress status
-cmd paste $cp-p --lf-paste $id
+# cmd paste $cp-p --lf-paste $id
 
 # Rename current file or selected files
 cmd batch_rename ${{
@@ -27,9 +27,9 @@ cmd batch_rename ${{
     current_file="${splited_path[-1]}"
     selected_files_count=$(echo "$fx" | wc -l)
     if [[ $selected_files_count == 1 ]]; then
-        lf -remote "send $id push :rename<space>$current_file"
+        lf -remote "send $id push :rename<enter>"
     elif [[ $selected_files_count == 0 ]]; then
-        lf -remote "send $id push :rename<space>$current_file"
+        lf -remote "send $id push :rename<enter>"
     else
         paths_before="$(mktemp)"
         paths_after="$(mktemp)"
@@ -63,11 +63,11 @@ map A push :mkfile<space>
 map D delete
 map . set hidden!
 map <enter> open
+map E $vi
 
-# Sudo maps TODO: fix
-# map Sr sudo batch_rename
-# map Sa sudo push :mkdir<space>
-# map SA sudo push :mkfile<space>
-# map SD sudo delete
-# map Se sudo $EDITOR "$@"
-# map Sc sudo cut
+# Sudo maps
+map Sr sudo batch_rename
+map Sa sudo push :mkdir<space>
+map SA sudo push :mkfile<space>
+map SD sudo delete
+map Se sudo $EDITOR "$@"

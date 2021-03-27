@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-source script_status.sh
+source show_status.sh
 
 print_message "INIT CONFIGURATION"
 cat .bashrc | sed -e 1d >> ~/.bashrc
 sudo apt purge --autoremove -y gedit
-gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']"
 
 print_message "UPDATE"
 sudo apt-add-repository universe
@@ -16,23 +16,26 @@ sudo snap refresh
 print_message "INSTALL LB-OFFICE AND TERM UTILS"
 sudo apt install -y libreoffice-calc libreoffice-writer curl mlocate wget gcc make
 
-print_message "INSTALL VSCODE AND SOUND SWITCHER"
+print_message "INSTALL SNAPS: VSCODE|SOUND SWITCHER"
 sudo snap install --classic code
 sudo snap install indicator-sound-switcher
 
-print_message "INSTALL AND SETUP GIT"
+print_message "INSTALL GIT"
 sudo apt install -y git
 rm -f ~/.gitconfig
-cp .gitconfig ~/
+ln -sf $(pwd)/src/.gitconfig ~/.gitconfig
 
-print_message "INSTALL AND SETUP GS"
-# TODO
+print_message "INSTALL GS"
+git clone https://github.com/pedro-hs/git-selection.git
+cd git-selection
+source install.bash
+cd ..
+rm -rf git-selection
 
-print_message "INSTALL AND SETUP KITTY"
+print_message "INSTALL KITTY"
 sudo apt install -y kitty
-rm -rf ~/.config/kitty
-mkdir ~/.config/kitty
-cp kitty/* ~/.config/kitty
+rm -rf ~/.config/kitty/*
+ln -sf $(pwd)/src/.config/kitty ~/.config/kitty
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command "'kitty -o allow_remote_control=yes --listen-on unix:/tmp/mykitty'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding "'<Super>t'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name "'kitty'"
@@ -48,31 +51,26 @@ dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/cus
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/binding "'<Super>g'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/name "'chrome'"
 
-print_message "INSTALL AND SETUP LF"
+print_message "INSTALL LF"
 echo 'deb http://download.opensuse.org/repositories/home:/Provessor/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/home:Provessor.list
 curl -fsSL https://download.opensuse.org/repositories/home:Provessor/xUbuntu_20.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_Provessor.gpg > /dev/null
 sudo apt update
 sudo apt install lf
 rm -rf ~/.config/lf
-mkdir ~/.config/lf
-cp lf/* ~/.config/lf
-git clone https://github.com/Naheel-Azawy/cp-p.git
-cd cp-p
-make
-sudo make install
-cd ..
-rm -rf cp-p
+ln -sf $(pwd)/src/.config/lf ~/.config/lf
 rm -rf ~/.local/share/lf
-mkdir ~/.local/share/lf
-cp lf/marks ~/.local/share/lf
+ln -sf $(pwd)/src/.local/share/lf ~/.local/share/lf
 
-print_message "INSTALL AND SETUP NEOVIM"
+print_message "INSTALL NEOVIM"
 installation_dir="$(pwd)"
 cd ~/.config
-sudo rm -rf nvim
+rm -rf nvim
 git clone https://github.com/pedro-hs/nvim.git
 cd nvim
-sudo sh install.sh && vi -c PlugInstall +qall
+sh install.sh && vi -c PlugInstall +qall
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command "'kitty -o allow_remote_control=yes --listen-on unix:/tmp/mykitty nvim'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding "'<Super>n'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name "'neovim'"
 cd "$installation_dir"
 
 print_message "SETUP PREFERENCES"
@@ -83,7 +81,6 @@ gsettings set org.gnome.desktop.interface clock-show-weekday true
 gsettings set org.gnome.desktop.interface enable-animations false
 gsettings set org.gnome.desktop.interface enable-hot-corners true
 gsettings set org.gnome.desktop.interface show-battery-percentage true
-gsettings set org.gnome.desktop.interface gtk-key-theme Emacs
 gsettings set org.gnome.shell.extensions.desktop-icons show-trash false
 gsettings set org.gnome.shell.extensions.desktop-icons show-home false
 gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 30
@@ -95,8 +92,8 @@ gsettings set org.gnome.mutter center-new-windows true
 dconf write /org/gnome/shell/favorite-apps "['google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'kitty.desktop']"
 
 print_message "CHANGE .DESKTOP"
-rm -rf /usr/share/applications/kitty.desktop
-rm -rf /usr/share/applications/nvim.desktop
+sudo rm -rf /usr/share/applications/kitty.desktop
+sudo rm -rf /usr/share/applications/nvim.desktop
 sudo cp desktop/* /usr/share/applications
 sudo updatedb
 
