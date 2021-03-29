@@ -18,9 +18,6 @@ map gf :goto_fzf
 # Freeze
 map <c-z> $ kill -STOP $PPID
 
-# Paste with progress status
-# cmd paste $cp-p --lf-paste $id
-
 # Rename current file or selected files
 cmd batch_rename ${{
     splited_path=(${fx//\// })
