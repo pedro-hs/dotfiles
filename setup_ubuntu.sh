@@ -68,6 +68,10 @@ rm -rf nvim
 git clone https://github.com/pedro-hs/nvim.git
 cd nvim
 sh install.sh && vi -c PlugInstall +qall
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/DroidSansMono.zip
+unzip DroidSansMono.zip -d ~/.fonts
+fc-cache -fv
+rm -f DroidSansMono.zip
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command "'kitty -o allow_remote_control=yes --single-instance --listen-on unix:@mykitty nvim'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding "'<Super>n'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name "'neovim'"
