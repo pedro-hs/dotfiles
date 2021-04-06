@@ -4,6 +4,7 @@ alias vbsh="cd ~ && nvim .bashrc"
 alias sbsh="cd ~ && source .bashrc"
 alias xp="xclip -sel clip"
 PS1='\w\[\033[32m\]$(__git_ps1)\n \$\[\033[0m\] '
+test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 
 # git
 alias gg="git"
@@ -20,8 +21,8 @@ export EDITOR="nvim"
 alias src="cd ~/Documents/src"
 
 # lf
-source ~/.config/lf/scripts/lfcd.sh
-alias lf="lfcd"
+source ~/.config/lf/lfcd.sh
+alias f="lfcd"
 
 # kitty
 export TERM="xterm-256color"

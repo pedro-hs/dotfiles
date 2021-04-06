@@ -3,8 +3,10 @@ source show_status.sh
 
 print_message "INIT CONFIGURATION"
 cat src/.bashrc | sed -e 1d >> ~/.bashrc
-sudo apt purge --autoremove -y gedit
+rm -f ~/.dir_colors
+ln -sf $(pwd)/src/.dir_colors ~/.dir_colors
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']"
+sudo apt purge --autoremove -y gedit
 
 print_message "UPDATE"
 sudo apt-add-repository universe
@@ -93,14 +95,16 @@ gsettings set org.gnome.shell.extensions.dash-to-dock preferred-monitor 0
 gsettings set org.gnome.desktop.session idle-delay 0
 gsettings set org.gnome.desktop.wm.preferences button-layout :close
 gsettings set org.gnome.mutter center-new-windows true
-gsettings set org.gnome.desktop.peripherals.keyboard delay 200
+gsettings set org.gnome.desktop.peripherals.keyboard delay 250
 dconf write /org/gnome/shell/favorite-apps "['google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'kitty.desktop']"
 
 print_message "CHANGE .DESKTOP"
 sudo rm -rf /usr/share/applications/kitty.desktop
 sudo rm -rf /usr/share/applications/nvim.desktop
 sudo cp src/desktop/* /usr/share/applications
+
 sudo updatedb
+source ~/.bashrc
 
 print_message "TODO"
 echo 'Make vim after install'

@@ -61,6 +61,7 @@ map D delete
 map . set hidden!
 map <enter> open
 map E $vi
+map R redraw
 
 # Sudo maps
 map Sr sudo batch_rename
