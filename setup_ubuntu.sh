@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source show_status.sh
 
-print_message "INIT CONFIGURATION"
+print_message "INITIAL SETUP"
 cat src/.bashrc | sed -e 1d >> ~/.bashrc
 rm -f ~/.dir_colors
 ln -sf $(pwd)/src/.dir_colors ~/.dir_colors
@@ -15,10 +15,10 @@ sudo apt update -y
 sudo apt upgrade -y
 sudo snap refresh
 
-print_message "INSTALL LB-OFFICE AND TERM UTILS"
+print_message "INSTALL LB-OFFICE,TERM-UTILS"
 sudo apt install -y libreoffice-calc libreoffice-writer curl mlocate wget gcc make
 
-print_message "INSTALL SNAPS: VSCODE|SOUND SWITCHER"
+print_message "INSTALL SNAPS: VSCODE,SOUND-SWITCHER"
 sudo snap install --classic code
 sudo snap install indicator-sound-switcher
 
@@ -42,7 +42,7 @@ dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/cus
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding "'<Super>t'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name "'kitty'"
 
-print_message "INSTALL PIP AND VIRTUALENV"
+print_message "INSTALL PIP,VIRTUALENV"
 sudo apt install -y python3-pip python3-virtualenv
 
 print_message "INSTALL CHROME"
@@ -70,10 +70,6 @@ rm -rf nvim
 git clone https://github.com/pedro-hs/nvim.git
 cd nvim
 sh install.sh && vi -c PlugInstall +qall
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/DroidSansMono.zip
-unzip DroidSansMono.zip -d ~/.fonts
-fc-cache -fv
-rm -f DroidSansMono.zip
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command "'kitty -o allow_remote_control=yes --single-instance --listen-on unix:@mykitty nvim'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding "'<Super>n'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name "'neovim'"
