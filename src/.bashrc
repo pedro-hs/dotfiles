@@ -1,5 +1,6 @@
 # /bin/cp /etc/skel/.bashrc ~/
 # bash
+gsettings set org.gnome.desktop.peripherals.keyboard delay 250
 alias vbsh="cd ~ && nvim .bashrc"
 alias sbsh="cd ~ && source .bashrc"
 alias xp="xclip -sel clip"
@@ -7,7 +8,7 @@ PS1='\w\[\033[32m\]$(__git_ps1)\n \$\[\033[0m\] '
 test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 
 # git
-alias gg="git"
+alias g="git"
 alias gconf="cd ~ && nvim .gitconfig"
 
 # python

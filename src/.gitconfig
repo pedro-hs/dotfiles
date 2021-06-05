@@ -1,7 +1,7 @@
 [alias]
 s     = status -su
 d     = diff
-pull  = pull origin
+pull  = git pull origin # fix
 push  = push origin
 pl    = !git pull origin `git branch --show-current`
 ps    = !git push origin `git branch --show-current`
@@ -17,3 +17,5 @@ sa    = stash apply
 sd    = stash drop
 rh    = reset --hard
 r     = reset
+f	  = fetch
+ma	  = merge --abort
