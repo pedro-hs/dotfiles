@@ -1,0 +1,84 @@
+create script to execute my scripts (use checkbox) and create an alias
+corrigir lf e sound switcher na pos instalacao
+zsh
+select and copy text from terminal using the keyboard
+corrigir velocidade do cursor (universal access -> Repeats keys -> Speed)
+
+vim typescript
+    corrigir comentarios
+    escrever jsx mais facil
+    comentar e descomentar abre e fecha
+    <leader>o em tags jsx
+
+vim python
+    goto nao funciona a partir da terceira subpasta e nem nos testes
+    isort ordena errado
+
+vim
+    stop terminal jumping/kicking after run some commands
+    <leder>dh or dl repeat with dot
+
+vim search
+    replace text in selected text
+    fazer hi no <leader>rd ficar nas mesmas palavras que o hi esta (case e full word match)
+    search selected text (with parenteshis in fuzzy finder)
+
+lf
+    open vim file in current kitty instead of gnome terminal
+    extract and compress
+    copy path
+    image pdf preview
+    personalize status bar
+    drag and drop
+    show file details like in cfiles
+    fix sudo commands
+
+change programs?
+    postman
+        vim http
+        dot http
+        httpie
+    sgbd
+        dadbob
+    email client
+    notes
+
+kitty_man() {
+    less <<EOF
+    # tab
+    ctrl shit t - create
+    ctrl shift q - close
+    ctrl shift left right - navigate tabs
+    ctrl shift alt t - rename tab
+
+    # terminal
+    ctrl shift up down - scroll
+    ctrl shift home end - go to home/end
+
+    # windows
+    ctrl j k l h - navigate
+    ctrl shift enter - create
+    ctrl shift w - close
+    ctrl shift l - change layout
+EOF
+}
+alias kman="kitty_man"
+
+emacs_man() {
+    less <<EOF
+    ctrl a       I
+    ctrl e       A
+    ctrl k       D
+    alt  d       de
+    ctrl u       d0
+    ctrl w       db
+    ctrl /       ggVG
+    ctrl f       l
+    ctrl b       h
+    alt  f       w
+    alt  b       b
+    ctrl l       clear
+    ctrl d       delete
+EOF
+}
+alias eman="emacs_man"
