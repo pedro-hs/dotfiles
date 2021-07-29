@@ -15,12 +15,10 @@ vim python
     isort ordena errado
 
 vim
-    stop terminal jumping/kicking after run some commands
+    stop terminal jumping/kicking after run clear command
     <leder>dh or dl repeat with dot
 
-vim search
-    replace text in selected text
-    fazer hi no <leader>rd ficar nas mesmas palavras que o hi esta (case e full word match)
+vim fzf
     search selected text (with parenteshis in fuzzy finder)
 
 lf
