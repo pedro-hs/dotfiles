@@ -1,6 +1,6 @@
 # /bin/cp /etc/skel/.bashrc ~/
+
 # bash
-gsettings set org.gnome.desktop.peripherals.keyboard delay 250
 alias vbsh="cd ~ && nvim .bashrc"
 alias sbsh="cd ~ && source .bashrc"
 alias xp="xclip -sel clip"

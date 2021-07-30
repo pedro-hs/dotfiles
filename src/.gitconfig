@@ -19,3 +19,4 @@ rh    = reset --hard
 r     = reset
 f	  = fetch
 ma	  = merge --abort
+cp    = cherry-pick

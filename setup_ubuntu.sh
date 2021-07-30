@@ -107,14 +107,3 @@ echo 'Make vim after install'
 echo 'Setup chrome bookmarks and adblock'
 
 print_message "DONE"
-
-# KEYBOARD FN TODO
-# wget https://github.com/jergusg/k380-function-keys-conf/archive/refs/tags/v1.1.zip
-# # Connect keyboard
-# unrar k380-function-keys-conf-1.1.zip
-# cd k380-function-keys-conf-1.1
-# make install
-# sudo k380_conf -d /dev/hidrawX -f on
-# cd ..
-# rm -rf k380-function-keys-conf-1.1
-# rm -f k380-function-keys-conf-1.1.zip
