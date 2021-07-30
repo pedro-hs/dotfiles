@@ -1,8 +1,6 @@
 create script to execute my scripts (use checkbox) and create an alias
 corrigir lf e sound switcher na pos instalacao
-zsh
 select and copy text from terminal using the keyboard
-corrigir velocidade do cursor (universal access -> Repeats keys -> Speed)
 
 vim typescript
     corrigir comentarios
@@ -15,7 +13,6 @@ vim python
     isort ordena errado
 
 vim
-    stop terminal jumping/kicking after run clear command
     <leder>dh or dl repeat with dot
 
 vim fzf
