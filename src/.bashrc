@@ -6,6 +6,7 @@ alias sbsh="cd ~ && source .bashrc"
 alias xp="xclip -sel clip"
 PS1='\w\[\033[32m\]$(__git_ps1)\n \$\[\033[0m\] '
 test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
+bind '"\C-d"':kill-line
 
 # git
 alias g="git"

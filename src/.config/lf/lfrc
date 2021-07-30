@@ -61,7 +61,7 @@ map D delete
 map . set hidden!
 map <enter> open
 map E $vi
-map R redraw
+map R reload
 map Q quit
 
 # Sudo maps
