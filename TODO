@@ -1,6 +1,7 @@
 create script to execute my scripts (use checkbox) and create an alias
 corrigir lf e sound switcher na pos instalacao
 select and copy text from terminal using the keyboard
+open image in terminal program
 
 vim typescript
     corrigir comentarios
@@ -15,6 +16,9 @@ vim python
 vim
     <leder>dh or dl repeat with dot
 
+vim and lf
+    open and edit files with sudo
+
 vim fzf
     search selected text (with parenteshis in fuzzy finder)
 
@@ -24,7 +28,6 @@ lf
     copy path
     image pdf preview
     personalize status bar
-    drag and drop
     show file details like in cfiles
     fix sudo commands
 
@@ -38,42 +41,3 @@ change programs?
     email client
     notes
 
-kitty_man() {
-    less <<EOF
-    # tab
-    ctrl shit t - create
-    ctrl shift q - close
-    ctrl shift left right - navigate tabs
-    ctrl shift alt t - rename tab
-
-    # terminal
-    ctrl shift up down - scroll
-    ctrl shift home end - go to home/end
-
-    # windows
-    ctrl j k l h - navigate
-    ctrl shift enter - create
-    ctrl shift w - close
-    ctrl shift l - change layout
-EOF
-}
-alias kman="kitty_man"
-
-emacs_man() {
-    less <<EOF
-    ctrl a       I
-    ctrl e       A
-    ctrl k       D
-    alt  d       de
-    ctrl u       d0
-    ctrl w       db
-    ctrl /       ggVG
-    ctrl f       l
-    ctrl b       h
-    alt  f       w
-    alt  b       b
-    ctrl l       clear
-    ctrl d       delete
-EOF
-}
-alias eman="emacs_man"

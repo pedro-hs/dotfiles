@@ -2,7 +2,7 @@
 source show_status.sh
 
 print_message "INITIAL SETUP"
-cat src/.bashrc | sed -e 1d >> ~/.bashrc
+cat src/static/.bashrc | sed -e 1d >> ~/.bashrc
 rm -f ~/.dir_colors
 ln -sf $(pwd)/src/.dir_colors ~/.dir_colors
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']"
@@ -53,6 +53,14 @@ dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/cus
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/binding "'<Super>g'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/name "'chrome'"
 
+print_message "INSTALL DRAGON"
+sudo apt-get install libgtk-3-dev wmctrl
+git clone https://github.com/mwh/dragon.git
+cd dragon
+make install
+cd ..
+rm -rf dragon
+
 print_message "INSTALL LF"
 echo 'deb http://download.opensuse.org/repositories/home:/Provessor/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/home:Provessor.list
 curl -fsSL https://download.opensuse.org/repositories/home:Provessor/xUbuntu_20.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_Provessor.gpg > /dev/null
@@ -97,7 +105,7 @@ dconf write /org/gnome/shell/favorite-apps "['google-chrome.desktop', 'org.gnome
 print_message "CHANGE .DESKTOP"
 sudo rm -rf /usr/share/applications/kitty.desktop
 sudo rm -rf /usr/share/applications/nvim.desktop
-sudo cp src/desktop/* /usr/share/applications
+sudo cp src/static/desktop/* /usr/share/applications
 
 sudo updatedb
 source ~/.bashrc

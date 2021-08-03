@@ -56,6 +56,10 @@ map a push :mkdir<space>
 cmd mkfile $vi "$@"
 map A push :mkfile<space>
 
+# Dragon
+cmd dr %dragon $fx
+cmd dra %dragon -a -x $fx
+
 # Maps
 map D delete
 map . set hidden!
