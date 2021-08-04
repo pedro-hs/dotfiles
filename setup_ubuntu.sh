@@ -70,6 +70,13 @@ rm -rf ~/.config/lf
 ln -sf $(pwd)/src/.config/lf ~/.config/lf
 rm -rf ~/.local/share/lf
 ln -sf $(pwd)/src/.local/share/lf ~/.local/share/lf
+sudo apt install ueberzug graphicsmagick ghostscript
+git clone https://github.com/slavistan/lf-gadgets.git
+cd lf-gadgets/lf-ueberzug
+sudo cp lf-ueberzug lf-ueberzug-cleaner lf-ueberzug-previewer /usr/local/bin
+rm -rf ~/.config/lf-ueberzug
+mkdir ~/.config/lf-ueberzug
+cp lfrc-ueberzug ~/.config/lf-ueberzug
 
 print_message "INSTALL NEOVIM"
 installation_dir="$(pwd)"

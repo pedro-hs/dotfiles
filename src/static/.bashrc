@@ -8,6 +8,12 @@ PS1='\w\[\033[32m\]$(__git_ps1)\n \$\[\033[0m\] '
 test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 bind '"\C-d"':kill-line
 
+trim() {
+    for f in *\ *; do
+        mv "$f" "${f// /_}"
+    done
+}
+
 # git
 alias g="git"
 alias gconf="cd ~ && nvim .gitconfig"

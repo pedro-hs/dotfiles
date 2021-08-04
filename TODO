@@ -1,7 +1,6 @@
 create script to execute my scripts (use checkbox) and create an alias
 corrigir lf e sound switcher na pos instalacao
 select and copy text from terminal using the keyboard
-open image in terminal program
 
 vim typescript
     corrigir comentarios
@@ -16,9 +15,6 @@ vim python
 vim
     <leder>dh or dl repeat with dot
 
-vim and lf
-    open and edit files with sudo
-
 vim fzf
     search selected text (with parenteshis in fuzzy finder)
 
@@ -26,10 +22,9 @@ lf
     open vim file in current kitty instead of gnome terminal
     extract and compress
     copy path
-    image pdf preview
     personalize status bar
     show file details like in cfiles
-    fix sudo commands
+    fix sudo commands (in vim too)
 
 change programs?
     postman
