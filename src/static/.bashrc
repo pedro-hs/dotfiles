@@ -47,6 +47,7 @@ alias f="lfcd"
 # kitty
 export TERM="xterm-256color"
 export TERMINAL="kitty -o allow_remote_control=yes --single-instance --listen-on unix:@mykitty"
+alias icat="kitty +kitten icat"
 
 # dragon
 dragonzord() {
