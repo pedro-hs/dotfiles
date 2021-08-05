@@ -17,6 +17,7 @@ vim
 
 vim fzf
     search selected text (with parenteshis in fuzzy finder)
+    ao entrar em um arquivo pelo fzf, o autosave e executado indevidamente
 
 lf
     open vim file in current kitty instead of gnome terminal
