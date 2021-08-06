@@ -1,11 +1,10 @@
-create script to execute my scripts (use checkbox) and create an alias
 corrigir lf e sound switcher na pos instalacao
-select and copy text from terminal using the keyboard
+selecionar e copiar texto do terminal usando o  teclado
 
 vim typescript
     corrigir comentarios
     escrever jsx mais facil
-    comentar e descomentar abre e fecha
+    comentar e descomentar abertura e fechamento da tag
     <leader>o em tags jsx
 
 vim python
@@ -13,21 +12,23 @@ vim python
     isort ordena errado
 
 vim
-    <leder>dh or dl repeat with dot
+    <leder>dh e dl repetir com ponto
+    <leader>dh and dl navegar apenas em commits em q o arquivo foi alterado
+    corrigir alteracao de arquivos com sudo
 
 vim fzf
-    search selected text (with parenteshis in fuzzy finder)
+    selecionar texto com parenteses e pesquisar, o texto nao e encontrado
     ao entrar em um arquivo pelo fzf, o autosave e executado indevidamente
 
 lf
-    open vim file in current kitty instead of gnome terminal
+    abrir vim no kitty ao inves do gnome-terminal
     extract and compress
-    copy path
-    personalize status bar
-    show file details like in cfiles
-    fix sudo commands (in vim too)
+    copiar path
+    barra de status personalizada
+    mostrar info do arquivo (exemplo: cfiles)
+    testar comandos com sudo
 
-change programs?
+trocar programas
     postman
         vim http
         dot http
@@ -35,5 +36,6 @@ change programs?
     sgbd
         dadbob
     email client
+        mutt
     notes
 
