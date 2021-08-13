@@ -3,8 +3,6 @@ source show_status.sh
 
 print_message "INITIAL SETUP"
 cat src/static/.bashrc | sed -e 1d >> ~/.bashrc
-rm -f ~/.dir_colors
-ln -sf $(pwd)/src/.dir_colors ~/.dir_colors
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']"
 sudo apt purge --autoremove -y gedit
 
