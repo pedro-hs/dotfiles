@@ -20,6 +20,11 @@ vim fzf
     selecionar texto com parenteses e pesquisar, o texto nao e encontrado
     ao entrar em um arquivo pelo fzf, o autosave e executado indevidamente
 
+scripts
+    configurar nome e email no git
+    corrigir setup_ubuntu para ssh no github
+    copiar path atual (bash e lf)
+
 lf
     abrir vim no kitty ao inves do gnome-terminal
     extract and compress

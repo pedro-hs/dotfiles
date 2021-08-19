@@ -6,7 +6,7 @@ alias sbsh="cd ~ && source .bashrc"
 alias xp="xclip -sel clip"
 PS1='\w\[\033[32m\]$(__git_ps1)\n \$\[\033[0m\] '
 test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
-bind '"\C-d"':kill-line
+bind '"\C-b"':kill-line
 
 trim() {
     for f in *\ *; do
@@ -25,6 +25,7 @@ alias penv="source env/bin/activate"
 
 # vim
 alias evi="cd ~/.config/nvim && nvim src/config.vim src/maps.vim src/complements.vim src/plugins.vim"
+alias svi="cd ~/.config/nvim && source init.vim"
 export EDITOR="nvim"
 alias src="cd ~/Documents/src"
 
