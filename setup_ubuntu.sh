@@ -1,29 +1,39 @@
 #!/usr/bin/env bash
 source show_status.sh
 
-print_message "INITIAL SETUP"
+print_message "UPDATE BASHRC"
 cat src/static/.bashrc | sed -e 1d >> ~/.bashrc
+
+print_message "INIT KEYBINDINGS"
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']"
-sudo apt purge --autoremove -y gedit
+
+print_message "REMOVE SNAP, GEDIT"
+sudo rm -rf /var/cache/snapd
+ sudo apt purge --autoremove -y snapd gedit
 
 print_message "UPDATE"
 sudo apt-add-repository universe
 sudo apt-add-repository multiverse
 sudo apt update -y
 sudo apt upgrade -y
-sudo snap refresh
 
 print_message "INSTALL LB-OFFICE,TERM-UTILS"
 sudo apt install -y libreoffice-calc libreoffice-writer curl mlocate wget gcc make
 
-print_message "INSTALL SNAPS: VSCODE,SOUND-SWITCHER"
-sudo snap install --classic code
-sudo snap install indicator-sound-switcher
+print_message "INSTALL VSCODE"
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+sudo apt install code
+
+print_message "INSTALL INDICATOR SOUND SWITCHER"
+sudo add-apt-repository ppa:yktooo/ppa
+sudo apt-get update
+sudo apt-get install indicator-sound-switcher
 
 print_message "INSTALL GIT"
 sudo apt install -y git
 rm -f ~/.gitconfig
-ln -sf $(pwd)/src/.gitconfig ~/.gitconfig
+ln -sf $(pwd)/src/static/.gitconfig ~/.gitconfig
 
 print_message "INSTALL GS"
 git clone https://github.com/pedro-hs/git-selection.git
