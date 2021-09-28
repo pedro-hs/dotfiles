@@ -18,7 +18,7 @@ sudo -u postgres -i psql
 
 ## DOCKER
 # execute psql in docker
-docker-compose exec postgres psql -h postgres -p 5432 -U postgres
+docker-compose exec postgres psql -h localhost -p 5432 -U postgres
 
 # down docker
 docker-compose down
@@ -37,6 +37,10 @@ docker system prune
 docker image prune
 docker container prune
 docker volume prune
-docker stop $(docker ps -a -q)
-docker rm $(docker ps -a -q)
 docker image rm $(docker image ls -a -q)
+
+
+## DJANGO
+# delete all migrations
+find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+find . -path "*/migrations/*.pyc"  -delete
