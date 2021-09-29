@@ -8,12 +8,6 @@ PS1='\w\[\033[32m\]$(__git_ps1)\n \$\[\033[0m\] '
 test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 bind '"\C-b"':kill-line
 
-trim() {
-    for f in *\ *; do
-        mv "$f" "${f// /_}"
-    done
-}
-
 # git
 alias g="git"
 alias gconf="cd ~ && nvim .gitconfig"
@@ -27,36 +21,12 @@ alias penv="source env/bin/activate"
 alias evi="cd ~/.config/nvim && nvim src/config.vim src/maps.vim src/complements.vim src/plugins.vim"
 alias svi="cd ~/.config/nvim && source init.vim"
 export EDITOR="nvim"
-alias src="cd ~/Documents/src"
-
-# lf
-lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        if [ -d "$dir" ]; then
-            if [ "$dir" != "$(pwd)" ]; then
-                cd "$dir"
-            fi
-        fi
-    fi
-}
-alias f="lfcd"
+alias src="cd ~/src"
 
 # kitty
 export TERM="xterm-256color"
 export TERMINAL="kitty -o allow_remote_control=yes --single-instance --listen-on unix:@mykitty"
 alias icat="kitty +kitten icat"
-
-# dragon
-dragonzord() {
-    (sleep 1 && WIN_ID="$(wmctrl -l | awk '/dragon/ {print $1}')" && wmctrl -i -r "$WIN_ID" -b add,above) &
-    dragon "$@"
-}
-alias dr="dragonzord"
-alias dra="dragozord -x -a"
 
 # maps man
 kittyman() {

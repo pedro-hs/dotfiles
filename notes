@@ -44,3 +44,14 @@ docker image rm $(docker image ls -a -q)
 # delete all migrations
 find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
 find . -path "*/migrations/*.pyc"  -delete
+
+
+## SCRIPTS
+# rename all files in folder removing white spaces
+for f in *\ *; do
+    mv "$f" "${f// /_}"
+done
+
+# config git user
+git config user.name
+git config user.email

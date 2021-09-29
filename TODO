@@ -25,14 +25,6 @@ scripts
     corrigir setup_ubuntu para ssh no github
     copiar path atual (bash e lf)
 
-lf
-    abrir vim no kitty ao inves do gnome-terminal
-    extract and compress
-    copiar path
-    barra de status personalizada
-    mostrar info do arquivo (exemplo: cfiles)
-    testar comandos com sudo
-
 trocar programas
     postman
         vim http

@@ -70,22 +70,23 @@ rm -f get-docker.sh
 sudo apt install -y docker-compose
 
 print_message "SETUP PREFERENCES"
-gsettings set org.gnome.desktop.sound event-sounds false
 gsettings set org.gnome.desktop.interface clock-show-date true
 gsettings set org.gnome.desktop.interface clock-show-seconds true
 gsettings set org.gnome.desktop.interface clock-show-weekday true
 gsettings set org.gnome.desktop.interface enable-hot-corners true
 gsettings set org.gnome.desktop.interface show-battery-percentage true
-gsettings set org.gnome.desktop.session idle-delay 0
-gsettings set org.gnome.desktop.wm.preferences button-layout :minimize,close
 gsettings set org.gnome.desktop.peripherals.keyboard delay 250
-#
+gsettings set org.gnome.desktop.session idle-delay 0
+gsettings set org.gnome.desktop.sound event-sounds false
+gsettings set org.gnome.desktop.wm.preferences button-layout :minimize,close
+gsettings set org.gnome.shell.extensions.zorin-menu layout 'APP_GRID'
+gsettings set org.gnome.shell.extensions.zorin-taskbar panel-element-positions '{"0":[{"element":"showAppsButton","visible":false,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"centerMonitor"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":false,"position":"stackedBR"}]}'
+gsettings set org.gnome.shell.extensions.zorin-taskbar scroll-icon-action 'NOTHING'
 gsettings set org.gnome.shell.extensions.zorin-taskbar click-action 'TOGGLE-SHOWPREVIEW'
-gsettings set org.gnome.shell.extensions.zorin-taskbar panel-element-positions '{"0":[{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"activitiesButton","visible":true,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"centerMonitor"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":false,"position":"stackedBR"}],"1":[{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"activitiesButton","visible":true,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"centerMonitor"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":false,"position":"stackedBR"}]}'
+gsettings set org.gnome.shell.extensions.zorin-taskbar intellihide true
 gsettings set org.gnome.shell.extensions.zorin-taskbar show-window-previews true
 gsettings set org.gnome.shell.extensions.zorin-taskbar panel-size 55
-gsettings set org.gnome.shell.extensions.zorin-taskbar intellihide true
-gsettings set org.gnome.shell.extensions.zorin-menu layout 'APP_GRID'
+gsettings set org.gnome.shell.extensions.zorin-taskbar window-preview-size 200
 
 print_message "CHANGE .DESKTOP"
 sudo rm -rf /usr/share/applications/kitty.desktop
@@ -101,7 +102,7 @@ source ~/.bashrc
 
 print_message "INSTALL DONE!"
 echo '-- TODO --'
-echo 'Create ssh  key'
+echo 'Create ssh key'
 echo 'Make vim after install'
 echo 'Setup firefox bookmarks and adblock'
 echo 'Open sound switcher'
