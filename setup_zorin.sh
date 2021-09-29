@@ -59,9 +59,9 @@ gsettings set org.gnome.desktop.interface enable-hot-corners true
 gsettings set org.gnome.desktop.interface show-battery-percentage true
 gsettings set org.gnome.shell.extensions.zorin-taskbar panel-size 55
 gsettings set org.gnome.shell.extensions.zorin-taskbar intellihide true
+gsettings set org.gnome.shell.extensions.user-theme name 'ZorinBlue-Dark'
 gsettings set org.gnome.desktop.session idle-delay 0
 gsettings set org.gnome.desktop.wm.preferences button-layout :minimize,close
-gsettings set org.gnome.mutter center-new-windows true
 gsettings set org.gnome.desktop.peripherals.keyboard delay 300
 # dconf write /org/gnome/shell/favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'kitty.desktop']"
 
