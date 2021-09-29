@@ -67,24 +67,10 @@ sudo apt install -y git
 rm -f ~/.gitconfig
 ln -sf $(pwd)/src/static/.gitconfig ~/.gitconfig
 
-print_message "INSTALL GS"
-git clone https://github.com/pedro-hs/git-selection.git
-cd git-selection
-source install.bash
-cd ..
-rm -rf git-selection
-
-print_message "INSTALL NEOVIM"
-installation_dir="$(pwd)"
-cd ~/.config
-rm -rf nvim
-git clone https://github.com/pedro-hs/nvim.git
-cd nvim
-sh install.sh && vi -c PlugInstall +qall
-# dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command "'kitty -o allow_remote_control=yes --single-instance --listen-on unix:@mykitty nvim'"
-# dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding "'<Super>n'"
-# dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name "'neovim'"
-cd "$installation_dir"
+print_message "CONFIGURE SSH KEY"
+sudo -u $(whoami) bash -c "ssh-keygen -f ~/.ssh/id_rsa -N ''"
+echo '-- SSH KEY --'
+cat ~/.ssh/id_rsa.pub
 
 print_message "CONCLUSION"
 sudo updatedb
@@ -92,11 +78,7 @@ sudo apt clean
 sudo apt autoclean
 sudo apt autoremove
 source ~/.bashrc
-
-print_message "CONFIGURE SSH KEY"
-sudo -u $(whoami) bash -c "ssh-keygen -f ~/.ssh/id_rsa -N ''"
-echo '-- SSH KEY --'
-cat ~/.ssh/id_rsa.pub
+sudo sed -i -e 's/#WaylandEnable=false/WaylandEnable=true/g' /etc/gdm3/custom.conf
 
 print_message "INSTALL DONE!"
 echo '-- TODO --'
