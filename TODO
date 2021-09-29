@@ -1,4 +1,3 @@
-corrigir lf e sound switcher na pos instalacao
 selecionar e copiar texto do terminal usando o  teclado
 
 vim typescript
@@ -22,8 +21,7 @@ vim fzf
 
 scripts
     configurar nome e email no git
-    corrigir setup_ubuntu para ssh no github
-    copiar path atual (bash e lf)
+    copiar path atual
 
 trocar programas
     postman
@@ -36,3 +34,13 @@ trocar programas
         mutt
     notes
 
+
+ranger
+    fzf
+    go to line with searched letter
+    rename single/multiple file start from begining/ending/extension_dot/cleaning_name
+    delete/copy/cut single/multiple
+    create dir/file
+    vimdiff between selected files
+    extract/compress single/multiple
+    paste/overwrite
