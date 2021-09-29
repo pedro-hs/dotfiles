@@ -21,6 +21,25 @@ sudo apt upgrade -y
 print_message "INSTALL TERM-UTILS"
 sudo apt install -y curl mlocate wget gcc make gnome-shell-extension-impatience ranger
 
+print_message "INSTALL GS"
+git clone https://github.com/pedro-hs/git-selection.git
+cd git-selection
+source install.bash
+cd ..
+rm -rf git-selection
+
+print_message "INSTALL NEOVIM"
+installation_dir="$(pwd)"
+cd ~/.config
+rm -rf nvim
+git clone git@github.com:pedro-hs/nvim.git
+cd nvim
+sh install.sh && vi -c PlugInstall +qall
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command "'kitty -o allow_remote_control=yes --single-instance --listen-on unix:@mykitty nvim'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding "'<Super>n'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name "'neovim'"
+cd "$installation_dir"
+
 print_message "INSTALL VSCODE"
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
@@ -50,30 +69,6 @@ sudo chmod 666 /var/run/docker.sock
 rm -f get-docker.sh
 sudo apt install -y docker-compose
 
-print_message "PREPARE DOTFILES"
-cd ~/src
-rm -rf dotfiles
-git clone git@github.com:pedro-hs/dotfiles.git
-
-print_message "INSTALL GS"
-git clone https://github.com/pedro-hs/git-selection.git
-cd git-selection
-source install.bash
-cd ..
-rm -rf git-selection
-
-print_message "INSTALL NEOVIM"
-installation_dir="$(pwd)"
-cd ~/.config
-rm -rf nvim
-git clone git@github.com:pedro-hs/nvim.git
-cd nvim
-sh install.sh && vi -c PlugInstall +qall
-dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command "'kitty -o allow_remote_control=yes --single-instance --listen-on unix:@mykitty nvim'"
-dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding "'<Super>n'"
-dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name "'neovim'"
-cd "$installation_dir"
-
 print_message "SETUP PREFERENCES"
 gsettings set org.gnome.desktop.sound event-sounds false
 gsettings set org.gnome.desktop.interface clock-show-date true
@@ -83,7 +78,7 @@ gsettings set org.gnome.desktop.interface enable-hot-corners true
 gsettings set org.gnome.desktop.interface show-battery-percentage true
 gsettings set org.gnome.desktop.session idle-delay 0
 gsettings set org.gnome.desktop.wm.preferences button-layout :minimize,close
-gsettings set org.gnome.desktop.peripherals.keyboard delay 300
+gsettings set org.gnome.desktop.peripherals.keyboard delay 250
 #
 gsettings set org.gnome.shell.extensions.zorin-taskbar click-action 'TOGGLE-SHOWPREVIEW'
 gsettings set org.gnome.shell.extensions.zorin-taskbar panel-element-positions '{"0":[{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"activitiesButton","visible":true,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"centerMonitor"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":false,"position":"stackedBR"}],"1":[{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"activitiesButton","visible":true,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"centerMonitor"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":false,"position":"stackedBR"}]}'
