@@ -19,7 +19,7 @@ sudo apt update -y
 sudo apt upgrade -y
 
 print_message "INSTALL TERM-UTILS"
-sudo apt install -y curl mlocate wget gcc make gnome-shell-extension-impatience
+sudo apt install -y curl mlocate wget gcc make gnome-shell-extension-impatience ranger
 
 print_message "INSTALL VSCODE"
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
@@ -63,7 +63,7 @@ gsettings set org.gnome.desktop.peripherals.keyboard delay 300
 #
 gsettings set org.gnome.shell.extensions.zorin-taskbar click-action 'TOGGLE-SHOWPREVIEW'
 gsettings set org.gnome.shell.extensions.zorin-taskbar panel-element-positions '{"0":[{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"activitiesButton","visible":true,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"centerMonitor"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":false,"position":"stackedBR"}],"1":[{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"activitiesButton","visible":true,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"centerMonitor"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":false,"position":"stackedBR"}]}'
-gsettings set org.gnome.shell.extensions.zorin-taskbar show-window-previews false
+gsettings set org.gnome.shell.extensions.zorin-taskbar show-window-previews true
 gsettings set org.gnome.shell.extensions.zorin-taskbar panel-size 55
 gsettings set org.gnome.shell.extensions.zorin-taskbar intellihide true
 gsettings set org.gnome.shell.extensions.zorin-menu layout 'APP_GRID'
