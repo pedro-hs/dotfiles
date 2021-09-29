@@ -9,7 +9,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[
 
 print_message "REMOVE SNAP, GEDIT"
 sudo rm -rf /var/cache/snapd
-sudo apt purge --autoremove -y snapd gedit gnome-mahjongg gnome-maps brasero evolution gimp gnome-calendar cheese gnome-mines gnome-photos libreoffice-draw pitivi quadrapassel remmina rhythmbox gnome-sound-recorder gnome-sudoku gnome-todo gnome-tour gnome-weather zorin-connect
+sudo apt purge --autoremove -y  snapd gedit aisleriot gnome-mahjongg gnome-maps brasero evolution gimp gnome-calendar cheese gnome-mines gnome-photos libreoffice-draw pitivi quadrapassel remmina rhythmbox gnome-sound-recorder gnome-sudoku gnome-todo gnome-tour gnome-weather zorin-connect
 
 print_message "UPDATE"
 sudo apt-add-repository universe
