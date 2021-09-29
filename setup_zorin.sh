@@ -27,7 +27,7 @@ sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/v
 sudo apt install -y code
 
 print_message "INSTALL INDICATOR SOUND SWITCHER"
-sudo add-apt-repository ppa:yktooo/ppa
+sudo add-apt-repository -y ppa:yktooo/ppa
 sudo apt-get update
 sudo apt-get install -y indicator-sound-switcher
 
@@ -66,7 +66,6 @@ gsettings set org.gnome.shell.extensions.zorin-taskbar panel-element-positions '
 gsettings set org.gnome.shell.extensions.zorin-taskbar show-window-previews false
 gsettings set org.gnome.shell.extensions.zorin-taskbar panel-size 55
 gsettings set org.gnome.shell.extensions.zorin-taskbar intellihide true
-gsettings set org.gnome.shell.extensions.user-theme name 'ZorinBlue-Dark'
 gsettings set org.gnome.shell.extensions.zorin-menu layout 'APP_GRID'
 
 print_message "CHANGE .DESKTOP"
