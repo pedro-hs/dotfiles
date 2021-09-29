@@ -57,13 +57,17 @@ gsettings set org.gnome.desktop.interface clock-show-seconds true
 gsettings set org.gnome.desktop.interface clock-show-weekday true
 gsettings set org.gnome.desktop.interface enable-hot-corners true
 gsettings set org.gnome.desktop.interface show-battery-percentage true
-gsettings set org.gnome.shell.extensions.zorin-taskbar panel-size 55
-gsettings set org.gnome.shell.extensions.zorin-taskbar intellihide true
-gsettings set org.gnome.shell.extensions.user-theme name 'ZorinBlue-Dark'
 gsettings set org.gnome.desktop.session idle-delay 0
 gsettings set org.gnome.desktop.wm.preferences button-layout :minimize,close
 gsettings set org.gnome.desktop.peripherals.keyboard delay 300
-# dconf write /org/gnome/shell/favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'kitty.desktop']"
+#
+gsettings set org.gnome.shell.extensions.zorin-taskbar click-action 'TOGGLE-SHOWPREVIEW'
+gsettings set org.gnome.shell.extensions.zorin-taskbar panel-element-positions '{"0":[{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"activitiesButton","visible":true,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"centerMonitor"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":false,"position":"stackedBR"}],"1":[{"element":"showAppsButton","visible":true,"position":"stackedTL"},{"element":"activitiesButton","visible":true,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"centerMonitor"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":false,"position":"stackedBR"}]}'
+gsettings set org.gnome.shell.extensions.zorin-taskbar show-window-previews false
+gsettings set org.gnome.shell.extensions.zorin-taskbar panel-size 55
+gsettings set org.gnome.shell.extensions.zorin-taskbar intellihide true
+gsettings set org.gnome.shell.extensions.user-theme name 'ZorinBlue-Dark'
+gsettings set org.gnome.shell.extensions.zorin-menu layout 'APP_GRID'
 
 print_message "CHANGE .DESKTOP"
 sudo rm -rf /usr/share/applications/kitty.desktop
