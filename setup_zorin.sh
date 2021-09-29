@@ -28,7 +28,7 @@ sudo apt install code
 print_message "INSTALL INDICATOR SOUND SWITCHER"
 sudo add-apt-repository ppa:yktooo/ppa
 sudo apt-get update
-sudo apt-get install indicator-sound-switcher
+sudo apt-get install -y indicator-sound-switcher
 
 print_message "INSTALL GIT"
 sudo apt install -y git
@@ -54,7 +54,7 @@ print_message "INSTALL PIP,VIRTUALENV"
 sudo apt install -y python3-pip python3-virtualenv
 
 print_message "INSTALL DRAGON"
-sudo apt-get install libgtk-3-dev wmctrl
+sudo apt-get install wmctrl
 git clone https://github.com/mwh/dragon.git
 cd dragon
 make install
@@ -62,21 +62,21 @@ cd ..
 rm -rf dragon
 
 print_message "INSTALL LF"
-echo 'deb http://download.opensuse.org/repositories/home:/Provessor/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/home:Provessor.list
-curl -fsSL https://download.opensuse.org/repositories/home:Provessor/xUbuntu_20.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_Provessor.gpg > /dev/null
-sudo apt update
-sudo apt install lf
-rm -rf ~/.config/lf
-ln -sf $(pwd)/src/.config/lf ~/.config/lf
-rm -rf ~/.local/share/lf
-ln -sf $(pwd)/src/.local/share/lf ~/.local/share/lf
-sudo apt install ueberzug graphicsmagick ghostscript
-git clone https://github.com/slavistan/lf-gadgets.git
-cd lf-gadgets/lf-ueberzug
-sudo cp lf-ueberzug lf-ueberzug-cleaner lf-ueberzug-previewer /usr/local/bin
-rm -rf ~/.config/lf-ueberzug
-mkdir ~/.config/lf-ueberzug
-cp lfrc-ueberzug ~/.config/lf-ueberzug
+# echo 'deb http://download.opensuse.org/repositories/home:/Provessor/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/home:Provessor.list
+# curl -fsSL https://download.opensuse.org/repositories/home:Provessor/xUbuntu_20.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_Provessor.gpg > /dev/null
+# sudo apt update
+# sudo apt install lf
+# rm -rf ~/.config/lf
+# ln -sf $(pwd)/src/.config/lf ~/.config/lf
+# rm -rf ~/.local/share/lf
+# ln -sf $(pwd)/src/.local/share/lf ~/.local/share/lf
+# sudo apt install ueberzug
+# git clone https://github.com/slavistan/lf-gadgets.git
+# cd lf-gadgets/lf-ueberzug
+# sudo cp lf-ueberzug lf-ueberzug-cleaner lf-ueberzug-previewer /usr/local/bin
+# rm -rf ~/.config/lf-ueberzug
+# mkdir ~/.config/lf-ueberzug
+# cp lfrc-ueberzug ~/.config/lf-ueberzug
 
 print_message "INSTALL NEOVIM"
 installation_dir="$(pwd)"
