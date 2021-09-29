@@ -98,7 +98,6 @@ sudo apt clean
 sudo apt autoclean
 sudo apt autoremove
 source ~/.bashrc
-sudo sed -i -e 's/#WaylandEnable=false/WaylandEnable=true/g' /etc/gdm3/custom.conf
 
 print_message "INSTALL DONE!"
 echo '-- TODO --'
@@ -106,5 +105,5 @@ echo 'Create ssh  key'
 echo 'Make vim after install'
 echo 'Setup firefox bookmarks and adblock'
 echo 'Open sound switcher'
-echo 'Configure impatient'
-echo 'Execute `sudo systemctl restart gdm3` to restart and select Wayland'
+echo 'Install extensions and configure impatient'
+echo 'Select Wayland'
