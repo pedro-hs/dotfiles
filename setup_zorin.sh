@@ -7,9 +7,10 @@ cat src/static/.bashrc | sed -e 1d >> ~/.bashrc
 print_message "INIT KEYBINDINGS"
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']"
 
-print_message "REMOVE SNAP, GEDIT"
+print_message "REMOVE BLOATWARE"
 sudo rm -rf /var/cache/snapd
-sudo apt purge --autoremove -y  snapd gedit aisleriot gnome-mahjongg gnome-maps brasero evolution gimp gnome-calendar cheese gnome-mines gnome-photos libreoffice-draw pitivi quadrapassel remmina rhythmbox gnome-sound-recorder gnome-sudoku gnome-todo gnome-tour gnome-weather zorin-connect
+sudo rm -rf /etc/gufw
+sudo apt purge --autoremove -y  snapd gedit aisleriot gnome-mahjongg gnome-maps brasero evolution gimp gnome-calendar cheese gnome-mines gnome-photos libreoffice-draw pitivi quadrapassel remmina rhythmbox gnome-sound-recorder gnome-sudoku gnome-todo gnome-tour gnome-weather zorin-connect gnome-contacts gufw
 
 print_message "UPDATE"
 sudo apt-add-repository universe
@@ -85,9 +86,9 @@ rm -rf nvim
 git clone https://github.com/pedro-hs/nvim.git
 cd nvim
 sh install.sh && vi -c PlugInstall +qall
-dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command "'kitty -o allow_remote_control=yes --single-instance --listen-on unix:@mykitty nvim'"
-dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding "'<Super>n'"
-dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name "'neovim'"
+# dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command "'kitty -o allow_remote_control=yes --single-instance --listen-on unix:@mykitty nvim'"
+# dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding "'<Super>n'"
+# dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name "'neovim'"
 cd "$installation_dir"
 
 print_message "SETUP PREFERENCES"
@@ -103,7 +104,7 @@ gsettings set org.gnome.desktop.session idle-delay 0
 gsettings set org.gnome.desktop.wm.preferences button-layout :minimize,close
 gsettings set org.gnome.mutter center-new-windows true
 gsettings set org.gnome.desktop.peripherals.keyboard delay 300
-dconf write /org/gnome/shell/favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'kitty.desktop']"
+# dconf write /org/gnome/shell/favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'kitty.desktop']"
 
 print_message "CHANGE .DESKTOP"
 sudo rm -rf /usr/share/applications/kitty.desktop
