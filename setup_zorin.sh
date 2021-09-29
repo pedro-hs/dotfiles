@@ -10,7 +10,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[
 print_message "REMOVE BLOATWARE"
 sudo rm -rf /var/cache/snapd
 sudo rm -rf /etc/gufw
-sudo apt purge --autoremove -y  snapd gedit aisleriot gnome-mahjongg gnome-maps brasero evolution gimp gnome-calendar cheese gnome-mines gnome-photos libreoffice-draw pitivi quadrapassel remmina rhythmbox gnome-sound-recorder gnome-sudoku gnome-todo gnome-tour gnome-weather zorin-connect gnome-contacts gufw
+sudo apt purge --autoremove -y snapd gedit aisleriot gnome-mahjongg gnome-maps brasero evolution gimp gnome-calendar cheese gnome-mines gnome-photos libreoffice-draw pitivi quadrapassel remmina rhythmbox gnome-sound-recorder gnome-sudoku gnome-todo gnome-tour gnome-weather zorin-connect gnome-contacts gufw totem
 
 print_message "UPDATE"
 sudo apt-add-repository universe
@@ -31,18 +31,6 @@ sudo add-apt-repository ppa:yktooo/ppa
 sudo apt-get update
 sudo apt-get install -y indicator-sound-switcher
 
-print_message "INSTALL GIT"
-sudo apt install -y git
-rm -f ~/.gitconfig
-ln -sf $(pwd)/src/static/.gitconfig ~/.gitconfig
-
-print_message "INSTALL GS"
-git clone https://github.com/pedro-hs/git-selection.git
-cd git-selection
-source install.bash
-cd ..
-rm -rf git-selection
-
 print_message "INSTALL KITTY"
 sudo apt install -y kitty
 rm -rf ~/.config/kitty/*
@@ -53,43 +41,6 @@ dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/cus
 
 print_message "INSTALL PIP,VIRTUALENV"
 sudo apt install -y python3-pip python3-virtualenv
-
-print_message "INSTALL DRAGON"
-sudo apt-get install wmctrl
-git clone https://github.com/mwh/dragon.git
-cd dragon
-make install
-cd ..
-rm -rf dragon
-
-print_message "INSTALL LF"
-# echo 'deb http://download.opensuse.org/repositories/home:/Provessor/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/home:Provessor.list
-# curl -fsSL https://download.opensuse.org/repositories/home:Provessor/xUbuntu_20.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_Provessor.gpg > /dev/null
-# sudo apt update
-# sudo apt install lf
-# rm -rf ~/.config/lf
-# ln -sf $(pwd)/src/.config/lf ~/.config/lf
-# rm -rf ~/.local/share/lf
-# ln -sf $(pwd)/src/.local/share/lf ~/.local/share/lf
-# sudo apt install ueberzug
-# git clone https://github.com/slavistan/lf-gadgets.git
-# cd lf-gadgets/lf-ueberzug
-# sudo cp lf-ueberzug lf-ueberzug-cleaner lf-ueberzug-previewer /usr/local/bin
-# rm -rf ~/.config/lf-ueberzug
-# mkdir ~/.config/lf-ueberzug
-# cp lfrc-ueberzug ~/.config/lf-ueberzug
-
-print_message "INSTALL NEOVIM"
-installation_dir="$(pwd)"
-cd ~/.config
-rm -rf nvim
-git clone https://github.com/pedro-hs/nvim.git
-cd nvim
-sh install.sh && vi -c PlugInstall +qall
-# dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command "'kitty -o allow_remote_control=yes --single-instance --listen-on unix:@mykitty nvim'"
-# dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding "'<Super>n'"
-# dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name "'neovim'"
-cd "$installation_dir"
 
 print_message "SETUP PREFERENCES"
 gsettings set org.gnome.desktop.sound event-sounds false
@@ -111,11 +62,45 @@ sudo rm -rf /usr/share/applications/kitty.desktop
 sudo rm -rf /usr/share/applications/nvim.desktop
 sudo cp src/static/desktop/* /usr/share/applications
 
+print_message "INSTALL GIT"
+sudo apt install -y git
+rm -f ~/.gitconfig
+ln -sf $(pwd)/src/static/.gitconfig ~/.gitconfig
+
+print_message "INSTALL GS"
+git clone https://github.com/pedro-hs/git-selection.git
+cd git-selection
+source install.bash
+cd ..
+rm -rf git-selection
+
+print_message "INSTALL NEOVIM"
+installation_dir="$(pwd)"
+cd ~/.config
+rm -rf nvim
+git clone https://github.com/pedro-hs/nvim.git
+cd nvim
+sh install.sh && vi -c PlugInstall +qall
+# dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command "'kitty -o allow_remote_control=yes --single-instance --listen-on unix:@mykitty nvim'"
+# dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding "'<Super>n'"
+# dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name "'neovim'"
+cd "$installation_dir"
+
+print_message "CONCLUSION"
 sudo updatedb
+sudo apt clean
+sudo apt autoclean
+sudo apt autoremove
 source ~/.bashrc
 
-print_message "TODO"
+print_message "CONFIGURE SSH KEY"
+sudo -u $(whoami) bash -c "ssh-keygen -f ~/.ssh/id_rsa -N ''"
+echo '-- SSH KEY --'
+cat ~/.ssh/id_rsa.pub
+
+print_message "INSTALL DONE!"
+echo '-- TODO --'
+echo 'Create ssh  key'
 echo 'Make vim after install'
 echo 'Setup firefox bookmarks and adblock'
-
-print_message "DONE"
+echo 'Open sound switcher'
