@@ -9,7 +9,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[
 
 print_message "REMOVE SNAP, GEDIT"
 sudo rm -rf /var/cache/snapd
- sudo apt purge --autoremove -y snapd gedit
+sudo apt purge --autoremove -y snapd gedit gnome-mahjongg gnome-maps brasero evolution gimp gnome-calendar cheese gnome-mines gnome-photos libreoffice-draw pitivi quadrapassel remmina rhythmbox gnome-sound-recorder gnome-sudoku gnome-todo gnome-tour gnome-weather zorin-connect
 
 print_message "UPDATE"
 sudo apt-add-repository universe
@@ -17,8 +17,8 @@ sudo apt-add-repository multiverse
 sudo apt update -y
 sudo apt upgrade -y
 
-print_message "INSTALL LB-OFFICE,TERM-UTILS"
-sudo apt install -y libreoffice-calc libreoffice-writer curl mlocate wget gcc make
+print_message "INSTALL TERM-UTILS"
+sudo apt install -y curl mlocate wget gcc make
 
 print_message "INSTALL VSCODE"
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
