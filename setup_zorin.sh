@@ -19,12 +19,12 @@ sudo apt update -y
 sudo apt upgrade -y
 
 print_message "INSTALL TERM-UTILS"
-sudo apt install -y curl mlocate wget gcc make
+sudo apt install -y curl mlocate wget gcc make gnome-shell-extension-impatience
 
 print_message "INSTALL VSCODE"
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
-sudo apt install code
+sudo apt install -y code
 
 print_message "INSTALL INDICATOR SOUND SWITCHER"
 sudo add-apt-repository ppa:yktooo/ppa
@@ -41,6 +41,14 @@ dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/cus
 
 print_message "INSTALL PIP,VIRTUALENV"
 sudo apt install -y python3-pip python3-virtualenv
+
+print_message "INSTALL DOCKER"
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+sudo usermod -aG docker "$(whoami)"
+sudo chmod 666 /var/run/docker.sock
+rm -f get-docker.sh
+sudo apt install -y docker-compose
 
 print_message "SETUP PREFERENCES"
 gsettings set org.gnome.desktop.sound event-sounds false
@@ -86,4 +94,5 @@ echo 'Create ssh  key'
 echo 'Make vim after install'
 echo 'Setup firefox bookmarks and adblock'
 echo 'Open sound switcher'
+echo 'Configure impatient'
 echo 'Execute `sudo systemctl restart gdm3` to restart and select Wayland'
