@@ -50,6 +50,30 @@ sudo chmod 666 /var/run/docker.sock
 rm -f get-docker.sh
 sudo apt install -y docker-compose
 
+print_message "PREPARE DOTFILES"
+cd ~/src
+rm -rf dotfiles
+git clone git@github.com:pedro-hs/dotfiles.git
+
+print_message "INSTALL GS"
+git clone https://github.com/pedro-hs/git-selection.git
+cd git-selection
+source install.bash
+cd ..
+rm -rf git-selection
+
+print_message "INSTALL NEOVIM"
+installation_dir="$(pwd)"
+cd ~/.config
+rm -rf nvim
+git clone git@github.com:pedro-hs/nvim.git
+cd nvim
+sh install.sh && vi -c PlugInstall +qall
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command "'kitty -o allow_remote_control=yes --single-instance --listen-on unix:@mykitty nvim'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding "'<Super>n'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name "'neovim'"
+cd "$installation_dir"
+
 print_message "SETUP PREFERENCES"
 gsettings set org.gnome.desktop.sound event-sounds false
 gsettings set org.gnome.desktop.interface clock-show-date true
@@ -72,16 +96,6 @@ print_message "CHANGE .DESKTOP"
 sudo rm -rf /usr/share/applications/kitty.desktop
 sudo rm -rf /usr/share/applications/nvim.desktop
 sudo cp src/static/desktop/* /usr/share/applications
-
-print_message "INSTALL GIT"
-sudo apt install -y git
-rm -f ~/.gitconfig
-ln -sf $(pwd)/src/static/.gitconfig ~/.gitconfig
-
-print_message "CONFIGURE SSH KEY"
-sudo -u $(whoami) bash -c "ssh-keygen -f ~/.ssh/id_rsa -N ''"
-echo '-- SSH KEY --'
-cat ~/.ssh/id_rsa.pub
 
 print_message "CONCLUSION"
 sudo updatedb
