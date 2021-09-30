@@ -13,8 +13,6 @@ sudo rm -rf /etc/gufw
 sudo apt purge --autoremove -y snapd gedit aisleriot gnome-mahjongg gnome-maps brasero evolution gimp gnome-calendar cheese gnome-mines gnome-photos libreoffice-draw pitivi quadrapassel remmina rhythmbox gnome-sound-recorder gnome-sudoku gnome-todo gnome-tour gnome-weather zorin-connect gnome-contacts gufw totem
 
 print_message "UPDATE"
-sudo apt-add-repository universe
-sudo apt-add-repository multiverse
 sudo apt update -y
 sudo apt upgrade -y
 
@@ -35,6 +33,9 @@ ln -sf $(pwd)/src/.config/kitty ~/.config/kitty
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command "'kitty -o allow_remote_control=yes --single-instance --listen-on unix:@mykitty'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding "'<Super>t'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name "'kitty'"
+sudo rm -rf /usr/share/applications/kitty.desktop
+sudo rm -rf /usr/share/applications/nvim.desktop
+sudo cp src/static/desktop/* /usr/share/applications
 
 print_message "INSTALL NEOVIM"
 installation_dir="$(pwd)"
@@ -90,11 +91,6 @@ gsettings set org.gnome.desktop.peripherals.keyboard delay 250
 gsettings set org.gnome.desktop.session idle-delay 0
 gsettings set org.gnome.desktop.sound event-sounds false
 gsettings set org.gnome.desktop.wm.preferences button-layout :minimize,close
-
-print_message "CHANGE .DESKTOP"
-sudo rm -rf /usr/share/applications/kitty.desktop
-sudo rm -rf /usr/share/applications/nvim.desktop
-sudo cp src/static/desktop/* /usr/share/applications
 
 print_message "CONFIGURE WAYLAND"
 sudo sed -i -e 's/#WaylandEnable=false/WaylandEnable=true/g' /etc/gdm3/custom.conf
