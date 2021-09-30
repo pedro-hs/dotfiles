@@ -103,7 +103,6 @@ sudo rm -rf /usr/share/applications/nvim.desktop
 sudo cp src/static/desktop/* /usr/share/applications
 
 print_message "CONCLUSION"
-sudo sed -i -e 's/#WaylandEnable=false/WaylandEnable=false/g' /etc/gdm3/custom.conf
 sudo updatedb
 sudo apt clean
 sudo apt autoclean
