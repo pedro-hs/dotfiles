@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source show_status.sh
+source others/show_status.sh
 
 print_message "INSTALL GIT"
 sudo apt install -y git

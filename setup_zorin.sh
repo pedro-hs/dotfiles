@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source show_status.sh
+source others/show_status.sh
 
 print_message "UPDATE BASHRC"
 cat src/static/.bashrc | sed -e 1d >> ~/.bashrc
@@ -107,6 +107,7 @@ print_message "INSTALL DONE!"
 echo '-- TODO --'
 echo 'Make vim after install'
 echo 'Setup firefox bookmarks, adblock and extensions'
+echo 'Reboot and select Wayland'
 echo 'Open sound switcher'
 echo 'Configure impatient'
-echo 'Reboot and select Wayland'
+echo 'Organize icons in dock and grid'
