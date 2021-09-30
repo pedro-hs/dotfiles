@@ -21,11 +21,6 @@ sudo apt upgrade -y
 print_message "INSTALL UTILS"
 sudo apt install -y curl mlocate wget gcc make gnome-shell-extension-impatience ranger drawing
 
-print_message "INSTALL GIT"
-sudo apt install -y git
-rm -f ~/.gitconfig
-ln -sf $(pwd)/src/static/.gitconfig ~/.gitconfig
-
 print_message "INSTALL GS"
 git clone https://github.com/pedro-hs/git-selection.git
 cd git-selection
