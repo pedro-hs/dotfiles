@@ -52,8 +52,8 @@ sh install.sh && vi -c PlugInstall +qall
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/command "'kitty -o allow_remote_control=yes --single-instance --listen-on unix:@mykitty nvim'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/binding "'<Super>n'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/name "'neovim'"
-
 cd "$installation_dir"
+
 print_message "INSTALL VSCODE"
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
@@ -66,6 +66,11 @@ sudo apt-get install -y indicator-sound-switcher
 
 print_message "INSTALL PIP,VIRTUALENV"
 sudo apt install -y python3-pip python3-virtualenv
+
+print_message "INSTALL CHROME"
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install -y ./google-chrome-stable_current_amd64.deb
+rm -f google-chrome-stable_current_amd64.deb
 
 print_message "INSTALL DOCKER"
 curl -fsSL https://get.docker.com -o get-docker.sh
