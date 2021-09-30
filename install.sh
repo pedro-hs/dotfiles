@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 source others/show_status.sh
 
+print_message "INSTALL GIT"
+sudo apt install -y git
+
 print_message "CLONE DOTFILES"
 mkdir /home/$(whoami)/src
 cd /home/$(whoami)/src

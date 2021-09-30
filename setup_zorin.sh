@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 source others/show_status.sh
 
-print_message "UPDATE BASHRC"
+print_message "SETUP BASHRC, GITCONFIG"
 cat src/static/.bashrc | sed -e 1d >> ~/.bashrc
+rm -f ~/.gitconfig
+ln -sf $(pwd)/src/static/.gitconfig ~/.gitconfig
 
 print_message "INIT KEYBINDINGS"
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
