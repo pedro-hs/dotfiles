@@ -25,7 +25,7 @@ sudo apt update -y
 sudo apt upgrade -y
 
 print_message "INSTALL UTILS"
-sudo apt install -y curl mlocate wget gcc make gnome-shell-extension-impatience ranger drawing
+sudo apt install -y curl mlocate wget gcc make gnome-shell-extension-impatience ranger drawing gnome-shell-extension-prefs
 
 print_message "INSTALL GS"
 git clone https://github.com/pedro-hs/git-selection.git
@@ -114,4 +114,4 @@ echo '-- TODO --'
 echo 'Make vim after install'
 echo 'Setup firefox bookmarks, adblock and extensions'
 echo 'Open sound switcher'
-echo 'Install extensions and configure impatient'
+echo 'Configure impatient'
