@@ -96,6 +96,10 @@ sudo rm -rf /usr/share/applications/kitty.desktop
 sudo rm -rf /usr/share/applications/nvim.desktop
 sudo cp src/static/desktop/* /usr/share/applications
 
+print_message "CONFIGURE WAYLAND"
+sudo sed -i -e 's/#WaylandEnable=false/WaylandEnable=true/g' /etc/gdm3/custom.conf
+sudo sed -i -e 's/DRIVER/# DRIVER/g' /usr/lib/udev/rules.d/61-gdm.rules
+
 print_message "CONCLUSION"
 sudo updatedb
 sudo apt clean
@@ -109,3 +113,4 @@ echo 'Make vim after install'
 echo 'Setup firefox bookmarks, adblock and extensions'
 echo 'Open sound switcher'
 echo 'Configure impatient'
+echo 'Reboot and select Wayland'
