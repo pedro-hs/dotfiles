@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 source show_status.sh
 
-print_message "CLONE DOTFILES"
-mkdir /home/$(whoami)/src
-cd /home/$(whoami)/src
-git clone git@github.com:pedro-hs/dotfiles.git
-cd dotfiles
-
 print_message "UPDATE BASHRC"
 cat src/static/.bashrc | sed -e 1d >> ~/.bashrc
 
