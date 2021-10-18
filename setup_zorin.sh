@@ -21,6 +21,10 @@ sudo apt upgrade -y
 print_message "INSTALL UTILS"
 sudo apt install -y curl mlocate wget gcc make gnome-shell-extension-impatience ranger drawing gnome-shell-extension-prefs
 
+print_message "INSTALL IMWHEEL"
+sudo apt install imwheel
+ln -sf $(pwd)/src/static/.imwheel ~/.imwheel
+
 print_message "INSTALL GS"
 git clone https://github.com/pedro-hs/git-selection.git
 cd git-selection
