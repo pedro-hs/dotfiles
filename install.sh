@@ -11,4 +11,4 @@ git clone git@github.com:pedro-hs/dotfiles.git
 cd dotfiles
 
 print_message "START INSTALLATION"
-source setup_zorin.sh
+source setup_ubuntu.sh
