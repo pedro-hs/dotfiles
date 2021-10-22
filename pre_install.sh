@@ -8,7 +8,5 @@ cat ~/.ssh/id_rsa.pub
 
 print_message "DONE"
 echo '-- TODO --'
-echo 'Change layout'
-echo 'Set dark theme'
 echo 'Add ssh to github'
 echo 'Run source install.sh'
