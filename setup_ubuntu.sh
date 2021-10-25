@@ -22,6 +22,9 @@ sudo apt upgrade -y
 print_message "INSTALL UTILS"
 sudo apt install -y curl mlocate wget gcc make gnome-shell-extension-impatience drawing gnome-shell-extension-prefs
 
+print_message "INSTALL PIP,VIRTUALENV"
+sudo apt install -y python3-pip python3-virtualenv
+
 print_message "INSTALL IMWHEEL"
 sudo apt install imwheel
 ln -sf $(pwd)/src/static/.imwheel ~/.imwheel
@@ -66,9 +69,6 @@ sudo add-apt-repository -y ppa:yktooo/ppa
 sudo apt-get update
 sudo apt-get install -y indicator-sound-switcher
 
-print_message "INSTALL PIP,VIRTUALENV"
-sudo apt install -y python3-pip python3-virtualenv
-
 print_message "INSTALL CHROME"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install -y ./google-chrome-stable_current_amd64.deb
@@ -96,8 +96,6 @@ gsettings set org.gnome.desktop.peripherals.keyboard delay 250
 gsettings set org.gnome.desktop.session idle-delay 0
 gsettings set org.gnome.desktop.sound event-sounds false
 gsettings set org.gnome.desktop.wm.preferences button-layout :minimize,close
-gsettings set org.gnome.shell.extensions.desktop-icons show-trash false
-gsettings set org.gnome.shell.extensions.desktop-icons show-home false
 gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 30
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
 gsettings set org.gnome.shell.extensions.dash-to-dock preferred-monitor 0
