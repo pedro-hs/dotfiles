@@ -82,6 +82,7 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 sudo usermod -aG docker "$(whoami)"
 sudo chmod 666 /var/run/docker.sock
+sudo chown $(whoami):$(whoami) /var/run/docker.sock
 rm -f get-docker.sh
 sudo apt install -y docker-compose
 
