@@ -23,6 +23,9 @@ docker-compose exec postgres psql -h localhost -p 5432 -U postgres
 # down docker
 docker-compose down
 
+# fix permission denied
+sudo chmod 666 /var/run/docker.sock
+
 # up docker
 docker-compose up
 
