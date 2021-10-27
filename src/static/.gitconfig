@@ -22,3 +22,4 @@ ma	  = merge --abort
 cp    = cherry-pick
 cu    = config user.name
 ce    = config user.email
+cl    = clone
