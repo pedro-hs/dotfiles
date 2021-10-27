@@ -20,7 +20,7 @@ sudo apt update -y
 sudo apt upgrade -y
 
 print_message "INSTALL UTILS"
-sudo apt install -y curl mlocate wget gcc make gnome-shell-extension-impatience drawing gnome-shell-extension-prefs shotwell
+sudo apt install -y curl mlocate wget gcc make gnome-shell-extension-impatience drawing gnome-shell-extension-prefs shotwell vlc --no-install-recommends
 
 print_message "INSTALL PIP,VIRTUALENV"
 sudo apt install -y python3-pip python3-virtualenv
