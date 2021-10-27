@@ -25,10 +25,6 @@ sudo apt install -y curl mlocate wget gcc make gnome-shell-extension-impatience 
 print_message "INSTALL PIP,VIRTUALENV"
 sudo apt install -y python3-pip python3-virtualenv
 
-print_message "INSTALL IMWHEEL"
-sudo apt install imwheel
-ln -sf $(pwd)/src/static/.imwheel ~/.imwheel
-
 print_message "INSTALL GS"
 git clone https://github.com/pedro-hs/git-selection.git
 cd git-selection
@@ -100,6 +96,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 30
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
 gsettings set org.gnome.shell.extensions.dash-to-dock preferred-monitor 0
 gsettings set org.gnome.mutter center-new-windows true
+gnome-extensions disable ding@rastersoft.com
 dconf write /org/gnome/shell/favorite-apps "['google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'kitty.desktop']"
 
 print_message "CONCLUSION"
