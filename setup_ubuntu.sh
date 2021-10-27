@@ -11,7 +11,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[
 
 print_message "REMOVE BLOATWARE"
 sudo rm -rf /var/cache/snapd
-sudo apt purge --autoremove -y snapd gedit gnome-characters
+sudo apt purge --autoremove -y snapd gedit gnome-characters eog
 
 print_message "UPDATE"
 sudo apt-add-repository universe
@@ -20,7 +20,7 @@ sudo apt update -y
 sudo apt upgrade -y
 
 print_message "INSTALL UTILS"
-sudo apt install -y curl mlocate wget gcc make gnome-shell-extension-impatience drawing gnome-shell-extension-prefs
+sudo apt install -y curl mlocate wget gcc make gnome-shell-extension-impatience drawing gnome-shell-extension-prefs shotwell
 
 print_message "INSTALL PIP,VIRTUALENV"
 sudo apt install -y python3-pip python3-virtualenv
