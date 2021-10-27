@@ -20,7 +20,7 @@ sudo apt update -y
 sudo apt upgrade -y
 
 print_message "INSTALL UTILS"
-sudo apt install -y curl mlocate wget gcc make gnome-shell-extension-impatience drawing gnome-shell-extension-prefs shotwell vlc --no-install-recommends
+sudo apt install -y curl mlocate wget gcc make gnome-shell-extension-impatience gnome-shell-extension-bluetooth-quick-connect drawing gnome-shell-extension-prefs shotwell vlc --no-install-recommends
 
 print_message "INSTALL PIP,VIRTUALENV"
 sudo apt install -y python3-pip python3-virtualenv
@@ -64,6 +64,13 @@ print_message "INSTALL INDICATOR SOUND SWITCHER"
 sudo add-apt-repository -y ppa:yktooo/ppa
 sudo apt-get update
 sudo apt-get install -y indicator-sound-switcher
+
+print_message "INSTALL BLUR MY SHELL"
+git clone https://github.com/aunetx/blur-my-shell
+cd blur-my-shell
+make install
+cd ..
+rm -rf blur-my-shell
 
 print_message "INSTALL CHROME"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -110,5 +117,5 @@ print_message "INSTALL DONE!"
 echo '-- TODO --'
 echo 'Make vim after install'
 echo 'Setup bookmarks and adblock'
-echo 'Configure impatient'
+echo 'Configure extensions (impatient, blur my shell)'
 echo 'Organize icons in dock and grid'
