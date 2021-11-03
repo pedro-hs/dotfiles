@@ -65,13 +65,6 @@ sudo add-apt-repository -y ppa:yktooo/ppa
 sudo apt-get update
 sudo apt-get install -y indicator-sound-switcher
 
-print_message "INSTALL BLUR MY SHELL"
-git clone https://github.com/aunetx/blur-my-shell
-cd blur-my-shell
-make install
-cd ..
-rm -rf blur-my-shell
-
 print_message "INSTALL CHROME"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install -y ./google-chrome-stable_current_amd64.deb
@@ -117,5 +110,5 @@ print_message "INSTALL DONE!"
 echo '-- TODO --'
 echo 'Make vim after install'
 echo 'Setup bookmarks and adblock'
-echo 'Configure extensions (impatient, blur my shell)'
+echo 'Configure extensions (impatient)'
 echo 'Organize icons in dock and grid'

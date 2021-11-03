@@ -44,3 +44,11 @@ ranger
     vimdiff between selected files
     extract/compress single/multiple
     paste/overwrite
+
+lsp
+    rename
+    go to definition
+    autocomplete
+    lint
+    autoformat
+    substituir highlight yank do coc
