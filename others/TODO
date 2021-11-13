@@ -45,15 +45,10 @@ ranger
     extract/compress single/multiple
     paste/overwrite
 
-lsp
+vim lsp
     rename
     go to definition
     autocomplete
     lint
     autoformat
     substituir highlight yank do coc
-
-criar config minimalista pro vim
-criar alias para rodar vim minimalista e vim sem configs
-permitir funcionamento normal em arquivos grandes
-    remover syntaxe e plugins pesados

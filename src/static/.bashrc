@@ -2,6 +2,7 @@
 
 # bash
 alias vbsh="cd ~ && nvim .bashrc"
+alias dotfiles="cd ~/src && cd dotfiles && nvim"
 alias sbsh="cd ~ && source .bashrc"
 alias xp="xclip -sel clip"
 PS1='\w\[\033[32m\]$(__git_ps1)\n \$\[\033[0m\] '
@@ -20,7 +21,7 @@ alias penv="source env/bin/activate"
 alias pvenv="source env/bin/activate"
 
 # vim
-alias evi="cd ~/.config/nvim && nvim src/config.vim src/maps.vim src/complements.vim src/plugins.vim"
+alias evi="cd ~/.config/nvim && nvim src/config.vim src/maps.vim src/complements.vim src/integrations.vim src/plugins.vim src/extra.vim"
 alias svi="cd ~/.config/nvim && source init.vim"
 export EDITOR="nvim"
 alias src="cd ~/src"
