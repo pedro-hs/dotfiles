@@ -6,9 +6,7 @@ alias dotfiles="cd ~/src && cd dotfiles && nvim"
 alias sbsh="cd ~ && source .bashrc"
 alias xp="xclip -sel clip"
 PS1='\w\[\033[32m\]$(__git_ps1)\n \$\[\033[0m\] '
-test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 bind '"\C-b"':kill-line
-imwheel --kill --buttons "4 5" >/dev/null 2>&1
 
 # git
 alias g="git"
@@ -16,6 +14,7 @@ alias gconf="cd ~ && nvim .gitconfig"
 
 # python
 alias pip=pip3
+alias python="python3"
 alias pm="python3 manage.py"
 alias penv="source env/bin/activate"
 alias pvenv="source env/bin/activate"
