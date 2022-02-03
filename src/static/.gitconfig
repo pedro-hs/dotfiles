@@ -1,8 +1,7 @@
 [alias]
 s     = status -su
 d     = diff
-pull  = git pull origin # fix
-push  = push origin
+plo   = git pull origin
 pl    = !git pull origin `git branch --show-current`
 ps    = !git push origin `git branch --show-current`
 b     = branch
@@ -12,6 +11,7 @@ ch    = checkout
 cmm   = commit -m
 cm    = !git add . && git commit -m
 a     = add .
+st    = stash
 sl    = stash list
 sa    = stash apply
 sd    = stash drop

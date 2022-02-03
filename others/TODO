@@ -19,10 +19,6 @@ vim fzf
     selecionar texto com parenteses e pesquisar, o texto nao e encontrado
     ao entrar em um arquivo pelo fzf, o autosave e executado indevidamente
 
-scripts
-    configurar nome e email no git
-    copiar path atual
-
 trocar programas
     postman
         vim http
@@ -33,7 +29,6 @@ trocar programas
     email client
         mutt
     notes
-
 
 ranger
     fzf
@@ -51,4 +46,9 @@ vim lsp
     autocomplete
     lint
     autoformat
-    substituir highlight yank do coc
+    intelisense
+
+vim fern
+    first time after start vim 
+        fern need to open, close and open to show dotfiles
+        creating a file show the 'action' text
