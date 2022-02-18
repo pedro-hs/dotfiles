@@ -48,7 +48,14 @@ vim lsp
     autoformat
     intelisense
 
+vim maps
+    Tentar fazer o maximo de sentido com os atalhos existentes do vim
+    Substituir leader por: y, m, z, g, d, c
+    Utilizar 2 letras
+    utilizar as 2 maos
+    Utilizar letras proximas as letras centrais
+
 vim fern
-    first time after start vim 
+    first time after start vim
         fern need to open, close and open to show dotfiles
         creating a file show the 'action' text
