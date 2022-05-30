@@ -5,6 +5,7 @@
 \pset format TAB - output format options
 \pset format wrapped - output format without wrap the line
 \pset format csv - output in csv format
+\q - quit
 
 # stop postgres
 sudo systemctl stop postgresql

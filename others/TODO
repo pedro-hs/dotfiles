@@ -1,4 +1,7 @@
 selecionar e copiar texto do terminal usando o  teclado (verificar https://github.com/yurikhan/kitty_grab)
+chrome sometimes lag when scroll
+keyboard and mouse sometimes disconnect from bluetooth and don't connect again, unless restart the pc
+wifi sometimes stop sending network data, and wifi stop working even being connected
 
 vim typescript
     corrigir comentarios
