@@ -61,16 +61,14 @@ sudo apt install -y code
 
 print_message "INSTALL INDICATOR SOUND SWITCHER"
 sudo add-apt-repository -y ppa:yktooo/ppa
-sudo apt-get update
-sudo apt-get install -y indicator-sound-switcher
+sudo apt update
+sudo apt install -y indicator-sound-switcher
 
-print_message "INSTALL CHROME"
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install -y ./google-chrome-stable_current_amd64.deb
-rm -f google-chrome-stable_current_amd64.deb
-dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command "'google-chrome --incognito'"
+print_message "INSTALL FIREFOX"
+sudo apt install firefox -y
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command "'firefox --private-window'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding "'<Super>g'"
-dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name "'chrome'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name "'firefox'"
 
 print_message "INSTALL DOCKER"
 curl -fsSL https://get.docker.com -o get-docker.sh
