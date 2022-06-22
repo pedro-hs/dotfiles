@@ -2,6 +2,7 @@ selecionar e copiar texto do terminal usando o  teclado (verificar https://githu
 chrome sometimes lag when scroll
 keyboard and mouse sometimes disconnect from bluetooth and don't connect again, unless restart the pc
 wifi sometimes stop sending network data, and wifi stop working even being connected
+the garbage implementation of bluetooth in ubuntu lost device connection and dont reconnect anymore until reboot the computer
 
 vim typescript
     corrigir comentarios
@@ -44,6 +45,7 @@ ranger
     paste/overwrite
 
 vim lsp
+    coc nvim esta consumindo 100% da cpu quando abre multiplos arquivos num projeto de angular criando multiplos processos node, ao inves de criar somente o do arquivo atual
     rename
     go to definition
     autocomplete
