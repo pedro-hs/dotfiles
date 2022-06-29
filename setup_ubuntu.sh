@@ -65,8 +65,7 @@ sudo add-apt-repository -y ppa:yktooo/ppa
 sudo apt update
 sudo apt install -y indicator-sound-switcher
 
-print_message "INSTALL FIREFOX"
-sudo apt install firefox -y
+print_message "FIREFOX KEYMAP"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command "'firefox --private-window'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding "'<Super>g'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name "'firefox'"
