@@ -19,7 +19,8 @@ sudo apt update -y
 sudo apt upgrade -y
 
 print_message "INSTALL UTILS"
-sudo apt install -y curl mlocate wget gcc make gnome-shell-extension-impatience gnome-shell-extension-bluetooth-quick-connect drawing gnome-shell-extension-prefs shotwell vlc --no-install-recommends
+sudo apt install -y curl mlocate wget gcc make drawing shotwell vlc --no-install-recommends
+sudo apt install -y gnome-shell-extension-manager
 
 print_message "INSTALL PIP,VIRTUALENV"
 sudo apt install -y python3-pip python3-virtualenv
@@ -107,5 +108,5 @@ print_message "INSTALL DONE!"
 echo '-- TODO --'
 echo 'Make vim after install'
 echo 'Setup bookmarks and adblock'
-echo 'Configure extensions (impatient)'
+echo 'Download and configure extensions (impatient)'
 echo 'Organize icons in dock and grid'
