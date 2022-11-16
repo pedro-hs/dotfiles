@@ -12,6 +12,9 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[
 print_message "REMOVE BLOATWARE"
 sudo apt purge --autoremove -y gedit gnome-characters eog
 
+print_message "INSTALL BITWARDEN"
+sudo snap install bitwarden
+
 print_message "UPDATE"
 sudo apt-add-repository universe
 sudo apt-add-repository multiverse

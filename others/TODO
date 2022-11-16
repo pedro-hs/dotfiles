@@ -1,8 +1,6 @@
 selecionar e copiar texto do terminal usando o  teclado (verificar https://github.com/yurikhan/kitty_grab)
-chrome sometimes lag when scroll
-keyboard and mouse sometimes disconnect from bluetooth and don't connect again, unless restart the pc
-wifi sometimes stop sending network data, and wifi stop working even being connected
-the garbage implementation of bluetooth in ubuntu lost device connection and dont reconnect anymore until reboot the computer
+
+vim autosave permanente (nao desliga ao trocar de arquivo)
 
 vim typescript
     corrigir comentarios
