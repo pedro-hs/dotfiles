@@ -1,3 +1,14 @@
+============
+correcao wifi ubuntu (adicionar esses ajustes no setup_ubuntu pra ficar automatico)
+============
+vi /etc/gai.conf
+decomentar linha abaixo
+precedence ::ffff:0:0/96  100
+
+sudo vi /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
+mudar wifi.powersave para 2, originalmente é 3
+============
+
 selecionar e copiar texto do terminal usando o  teclado (verificar https://github.com/yurikhan/kitty_grab)
 
 vim autosave permanente (nao desliga ao trocar de arquivo)
